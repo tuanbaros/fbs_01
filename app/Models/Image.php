@@ -1,11 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Product;
+use App\Models\Product;
+use App\Models\BaseModel;
 
-class Image extends Model
+class Image extends BaseModel
 {
     public function Product()
     {

@@ -1,15 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Follow;
-use App\Like;
-use App\Collection;
-use App\Product;
-use App\Category;
+use App\Models\Follow;
+use App\Models\Like;
+use App\Models\Collection;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\BaseModel;
 
-class Shop extends Model
+class Shop extends BaseModel
 {
     public function follows()
     {

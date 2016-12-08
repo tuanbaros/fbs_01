@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
-use App\Product;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\BaseModel;
 
-class Rate extends Model
+class Rate extends BaseModel
 {
     public function user()
     {

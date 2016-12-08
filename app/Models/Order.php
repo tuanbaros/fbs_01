@@ -1,14 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
-use App\OrderDetail;
-use App\Receiver;
-use App\Payment;
+use App\Models\User;
+use App\Models\OrderDetail;
+use App\Models\Receiver;
+use App\Models\Payment;
+use App\Models\BaseModel;
 
-class Order extends Model
+class Order extends BaseModel
 {
     public function user()
     {

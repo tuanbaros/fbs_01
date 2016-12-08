@@ -1,11 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Order;
+use App\Models\Order;
+use App\Models\BaseModel;
 
-class Receiver extends Model
+class Receiver extends BaseModel
 {
     public function order()
     {

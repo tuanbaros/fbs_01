@@ -1,16 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Rate;
-use App\Collection;
-use App\Image;
-use App\Category;
-use App\Shop;
-use App\OrderDetail;
+use App\Models\Rate;
+use App\Models\Collection;
+use App\Models\Image;
+use App\Models\Category;
+use App\Models\Shop;
+use App\Models\OrderDetail;
+use App\Models\BaseModel;
 
-class Product extends Model
+class Product extends BaseModel
 {
     public function rates()
     {

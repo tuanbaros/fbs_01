@@ -1,11 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Order;
+use App\Models\Order;
+use App\Models\BaseModel;
 
-class Payment extends Model
+class Payment extends BaseModel
 {
     public function order()
     {
