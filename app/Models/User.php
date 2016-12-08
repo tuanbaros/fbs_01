@@ -30,7 +30,8 @@ class User extends BaseModel implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'phone', 'password', 'is_active', 'is_admin', 
+        'avatar', 'facebook_id', 'google_id', 'remember_token'
     ];
 
     /**
@@ -39,7 +40,7 @@ class User extends BaseModel implements
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
     ];
 
     public function activities()
@@ -70,5 +71,12 @@ class User extends BaseModel implements
     public function shop()
     {
         return $this->hasOne(Shop::class);
+    }
+
+    public function scopeFindUser($query, $data)
+    {
+        return $query->where('email', $data)
+            ->orWhere('facebook_id', $data)
+            ->orWhere('google_id', $data);
     }
 }
