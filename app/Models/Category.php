@@ -1,13 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Product;
-use App\Shop;
-use App\Category;
+use App\Models\Product;
+use App\Models\Shop;
+use App\Models\Category;
+use App\Models\BaseModel;
 
-class Category extends Model
+class Category extends BaseModel
 {
     public function products()
     {

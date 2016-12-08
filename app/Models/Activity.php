@@ -1,11 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+use App\Models\User;
+use App\Models\BaseModel;
 
-class Activity extends Model
+class Activity extends BaseModel
 {
     public function user()
     {

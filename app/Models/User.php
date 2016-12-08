@@ -1,18 +1,28 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Activity;
-use App\Follow;
-use App\Like;
-use App\Rate;
-use App\Order;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class User extends Authenticatable
+use App\Models\Activity;
+use App\Models\Follow;
+use App\Models\Like;
+use App\Models\Rate;
+use App\Models\Order;
+use App\Models\BaseModel;
+
+class User extends BaseModel implements
+    AuthenticatableContract,
+    CanResetPasswordContract,
+    AuthorizableContract
 {
-    use Notifiable;
+    use Notifiable, Authenticatable, Authorizable, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.

@@ -1,13 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Shop;
-use App\Collection;
-use App\Product;
+use App\Models\Shop;
+use App\Models\Collection;
+use App\Models\Product;
+use App\Models\BaseModel;
 
-class Collection extends Model
+class Collection extends BaseModel
 {
     public function shop()
     {

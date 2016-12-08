@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Shop;
-use App\User;
+use App\Models\Shop;
+use App\Models\User;
+use App\Models\BaseModel;
 
-class Follow extends Model
+class Follow extends BaseModel
 {
     public function user()
     {
