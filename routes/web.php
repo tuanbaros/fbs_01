@@ -19,12 +19,12 @@ Auth::routes();
 
 Route::get('auth/{provider}', [
     'as' => 'provider.redirect',
-    // 'uses' => 'Auth\AuthController@redirectToProvider'
+    'uses' => 'Auth\LoginController@redirectToProvider'
 ]);
 
 Route::get('auth/{provider}/callback', [
     'as' => 'provider.handle',
-    // 'uses' => 'Auth\AuthController@handleProviderCallback'
+    'uses' => 'Auth\LoginController@handleProviderCallback'
 ]);
 
 Route::get('users/activation/{id}/{token}', [

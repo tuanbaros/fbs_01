@@ -64,10 +64,10 @@
                                 </div>
                             </div>
                         {!! Form::close() !!}
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                            <a class="btn btn-primary" href="{{ route('provider.redirect', ['provider' => 'facebook']) }}">Login with Facebook</a>
-                            <a class="btn btn-danger" href="{{ route('provider.redirect', ['provider' => 'google']) }}">Login with Google+</a>
+                        <div class="form-group col-md-offset-4">
+                            <a class="btn btn-primary" href="{{ route('provider.redirect', ['provider' => 'facebook']) }}">@lang('social.login.facebook')</a>
+                            <a class="btn btn-danger" href="{{ route('provider.redirect', ['provider' => 'google']) }}">@lang('social.login.google')</a>
+                            </div>
                         </div>
                     </div>
                 </div>

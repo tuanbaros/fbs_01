@@ -83,6 +83,11 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('/js/app.js') }}"></script> }}
+    <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset('/js/myapp.js') }}"></script>
+    <script>
+        var myApp = new myApp;
+        myApp.remove();
+    </script>
 </body>
 </html>

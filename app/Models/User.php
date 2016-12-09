@@ -43,6 +43,14 @@ class User extends BaseModel implements
         'password',
     ];
 
+    public function rules($ruleName)
+    {
+        return [
+            'email' => 'required|email',
+            'password' => 'required',
+        ];
+    }
+
     public function activities()
     {
         return $this->hasMany(Activity::class);

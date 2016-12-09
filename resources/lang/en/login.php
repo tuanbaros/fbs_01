@@ -9,4 +9,5 @@ return [
     'send.reset.password.link' => 'Send Password Reset Link',
     'reset.password' => 'Reset Password',
     'toggle' => 'Toggle Navigation',
+    'wrong' => 'Email or Password Invalid'
 ];
