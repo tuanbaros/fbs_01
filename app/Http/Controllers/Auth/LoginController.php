@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use App\Http\Requests;
+
+use App\Repositories\Eloquent\UserRepository;
+use Auth;
+use Socialite;
 
 class LoginController extends Controller
 {
@@ -32,8 +38,47 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository)
     {
         $this->middleware('guest', ['except' => 'logout']);
+        $this->userRepository = $userRepository;
+    }
+
+    /**
+     * Redirect the user to the Facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider($provider)
+    {
+        return Socialite::driver($provider)->redirect();
+    }
+ 
+    /**
+     * Obtain the user information from Facebook.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback($provider)
+    {
+        try {
+            $user = Socialite::driver($provider)->user();
+            $authUser = $this->userRepository->findOrCreateUser($provider, $user);
+            Auth::login($authUser, true);
+        } catch (Exception $e) {
+            return redirect('auth/' . $provider);
+        }
+ 
+        return redirect('/home');
+    }
+
+    protected function login(Request $request)
+    {
+        $data = $request->only('email', 'password');
+        
+        return $this->userRepository->login($data);
     }
 }
