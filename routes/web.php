@@ -33,3 +33,7 @@ Route::get('users/activation/{id}/{token}', [
 ]);
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+    Route::resource('category', 'CategoryController');
+});
