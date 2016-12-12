@@ -1,15 +1,28 @@
 <div class="row padding-top-bottom-20">
-    <div class="col-md-3 col-sm-12 col-xs-12">
+    <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 anc">
         <div class="categories list-group border-shadow-bottom">
             <a href="javascript:void(0)" class="list-group-item active">
                 <h4>@lang('categories.products-categories')</h4>
             </a>
-            <a href="" class="list-group-item">
-                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>@lang('categories.new-products')
-            </a>
+            @foreach ($categories as $key => $category)
+                <div class="cate">
+                    <a href="" class="list-group-item item-menu">
+                        <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>{{ $category->name }}
+                    </a>
+                    <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 submenu border-shadow-bottom">
+                        <div class="categories list-group border-shadow-bottom">
+                            @foreach ($category->categories as $key => $value)
+                                <a href="" class="list-group-item">
+                                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>{{ $value->name }}
+                                </a>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
-    <div class="col-md-9 col-sm-12 col-xs-12">
+    <div class="col-md-9 col-sm-12 col-xs-12 col-lg-9">
         <div class="row">
             <div id="carousel-example-generic" class="carousel slide border-shadow-bottom" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -58,3 +71,4 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="{{ asset('user/js/menu.js') }}"></script>

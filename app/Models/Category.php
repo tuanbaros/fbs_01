@@ -44,7 +44,8 @@ class Category extends BaseModel
 
     public function categories()
     {
-        return $this->hasMany(Category::class, 'parent_id');
+        return $this->hasMany(Category::class, 'parent_id')
+            ->where('sort', '<>', 0)->orderBy('sort', 'asc');
     }
 
     public function category()
