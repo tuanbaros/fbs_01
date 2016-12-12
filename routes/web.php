@@ -37,15 +37,13 @@ Route::group(['middleware' => 'auth'], function() {
     ]]);
 });
 
-
-Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth', 'as' => 'user.'], function() {
     Route::resource('shop', 'ShopController');
 });
 
 Route::get('/home', 'HomeController@index');
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function() {
-
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function() {
     Route::resource('category', 'CategoryController');
 
     Route::resource('users', 'UserController');

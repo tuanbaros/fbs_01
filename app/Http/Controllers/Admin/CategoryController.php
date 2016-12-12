@@ -32,7 +32,9 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->only('name', 'parent_id', 'sort');
-
+        if ($data['parent_id'] == 0) {
+            unset($data['parent_id']);
+        }
         return $this->categoryRepository->create($data);
     }
 

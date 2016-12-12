@@ -15,8 +15,13 @@ class CreateModifyCategoryTable extends Migration
     {
         Schema::table('categories', function ($table) {
             $table->integer('sort')->change();
+            
+        });
+
+        Schema::table('categories', function ($table) {
             $table->dropForeign('categories_parent_id_foreign');
-            $table->integer('parent_id')->unsigned()->default(null)->change();
+            $table->integer('parent_id')->unsigned()->nullable()->change();
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 
@@ -29,8 +34,12 @@ class CreateModifyCategoryTable extends Migration
     {
         Schema::table('categories', function ($table) {
             $table->boolean('sort')->default(false)->change();
-            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
+        });
+
+        Schema::table('categories', function ($table) {
+            $table->dropForeign('categories_parent_id_foreign');
             $table->integer('parent_id')->unsigned()->change();
+            $table->foreign('parent_id')->references('id')->on('categories')->onDelete('cascade');
         });
     }
 }

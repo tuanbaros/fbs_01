@@ -2,9 +2,10 @@
 
 @section('content')
     <h3 align="center">@lang('user.name_shop')</h3>
+
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            {!! Form::open(['route'=>'shop.store']) !!}
+            {!! Form::open(['route'=>'user.shop.store']) !!}
                 @include('admin.shared.error')
 
                 <div class="form-group">
@@ -21,7 +22,9 @@
                     {!! Form::label('category_id', Lang::get('user.label.category')) !!}
                     <select class="form-control" name="category_id">
                         <option value="0">@lang('admin.message.holder', ['name' => 'Category'])</option>
-                        {!! cateParent($categories) !!} 
+                        @foreach ($categories as $category)
+                            <option value="{!! $category->id !!}">{!! $category->name !!}</option>
+                        @endforeach
                     </select>
                 </div>
 

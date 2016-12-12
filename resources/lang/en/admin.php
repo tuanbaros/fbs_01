@@ -8,7 +8,7 @@ return [
     'sort' => 'Sort',
     'list' => 'List :name',
     'sort' => 'Sort',
-    'success' => 'Success',
+    'success' => 'success',
     'sub_category' => 'Sub Category',
     'sub' => 'Sub',
 

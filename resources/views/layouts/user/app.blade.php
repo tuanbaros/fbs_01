@@ -19,11 +19,11 @@
         <link rel="stylesheet" href="{{ asset('user/css/custom.css') }}">
     </head>
     <body>
-        @include('layouts.user.header')
+        @include('layouts.header')
         <div class="container">
             @yield('content')
         </div>
-        @include('layouts.user.footer')
+        @include('layouts.footer')
     </body>
     <script src="{{ asset('/js/myapp.js') }}"></script>
     <script>

@@ -24,7 +24,10 @@ class ShopController extends Controller
 
     public function create()
     {
-        $categories = $this->categoryRepository->getParents();
+        if (count($this->shopRepository->findByField('user_id', Auth::user()->id)) > 0) {
+            return redirect()->to('/');
+        }
+        $categories = $this->categoryRepository->findWhere(['parent_id' => null], ['name', 'id']);
 
         return view('user.shop.create-shop', compact('categories'));
     }
