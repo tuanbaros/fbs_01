@@ -3,6 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\Contracts\CategoryRepositoryInterface;
+use App\Repositories\Eloquent\CategoryRepository;
+use App\Repositories\Contracts\ShopRepositoryInterface;
+use App\Repositories\Eloquent\ShopRepository;
+use App\Repositories\Contracts\UserRepositoryInterface;
+use App\Repositories\Eloquent\UserRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,14 +29,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(
-            'App\Repositories\Contracts\CategoryRepositoryInterface',
-            'App\Repositories\Eloquent\CategoryRepository'
-        );
-
-        $this->app->bind(
-            'App\Repositories\Contracts\UserRepositoryInterface',
-            'App\Repositories\Eloquent\UserRepository'
-        );
+        $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
+        $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
+        $this->app->bind(ShopRepositoryInterface::class, ShopRepository::class);
     }
 }

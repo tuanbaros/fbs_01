@@ -32,10 +32,16 @@ Route::get('users/activation/{id}/{token}', [
     'uses' => 'Auth\RegisterController@userActivation'
 ]);
 
+
 Route::group(['middleware' => 'auth'], function() {
     Route::resource('users', 'UserController', ['only' => [
         'edit', 'update'
     ]]);
+});
+
+
+Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth'], function() {
+    Route::resource('shop', 'ShopController');
 });
 
 Route::get('/home', 'HomeController@index');
