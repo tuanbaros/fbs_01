@@ -6,13 +6,18 @@ use App\Repositories\Contracts\UserRepositoryInterface;
 use Prettus\Repository\Eloquent\BaseRepository;
 use App\Models\User;
 use Lang;
+use Auth;
 
 class UserRepository extends BaseRepository implements UserRepositoryInterface 
 {
-
     public function model()
     {
         return User::class;
+    }
+
+    public function getCurrentUser()
+    {
+        return Auth::user();
     }
 
     private function findUser($data)
@@ -20,7 +25,7 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
         return User::findUser($data)->first();
     }
 
-    private function validate($data, $ruleName)
+    public function validate($data, $ruleName)
     {
         return $this->model->validate($data, $ruleName);
     }
@@ -75,9 +80,9 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
             'password' => $data['password']
         ])) {
             if (!auth()->user()->is_active) {
-                $this->logout();
+                Auth::logout();
 
-                return back()->with('warning', Lang::get('login.please.active'));
+                return back()->with('warning', Lang::get('register.please.active'));
             }
 
             return redirect()->to('/');
