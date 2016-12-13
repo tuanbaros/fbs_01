@@ -8,10 +8,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Shoppe') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+    {{ Html::style('/bower_components/bootstrap/dist/css/bootstrap.min.css') }}
+    {{ Html::style('/bower_components/font-awesome/css/font-awesome.min.css') }}
+    {{ Html::style('/bower_components/sweetalert2/dist/sweetalert2.css') }}
+    {{ Html::style('/css/app.css') }}
+    {{ Html::style('/css/header.css') }}
+    @yield('style')
 
     <!-- Scripts -->
     <script>
@@ -35,43 +40,25 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" id="shop-name" href="{{ url('/') }}">
+                        {{ config('app.name', 'Shoppe') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">@lang('login.login')</a></li>
-                            <li><a href="{{ url('/register') }}">@lang('register.register')</a></li>
+                            <li><a id="shop-name" href="{{ url('/login') }}">@lang('login.login')</a></li>
+                            <li><a id="shop-name" href="{{ url('/register') }}">@lang('register.register')</a></li>
                         @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
-                                aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            @lang('login.logout')
-                                        </a>
-
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
+                            <li><a id="shop-name">{{ Auth::user()->name }}</a></li>
+                            <li><a id="logout" href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> 
+                            @lang('login.logout')</a>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST">
+                                    {{ csrf_field() }}
+                                </form>
                             </li>
                         @endif
                     </ul>
@@ -83,11 +70,16 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('/js/app.js') }}"></script>
-    <script src="{{ asset('/js/myapp.js') }}"></script>
+    {{ Html::script('/bower_components/jquery/dist/jquery.min.js') }}
+    {{ Html::script('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}
+    {{ Html::script('/bower_components/sweetalert2/dist/sweetalert2.min.js') }}
+    {{ Html::script('/bower_components/firebase/firebase.js') }}
+    {{ Html::script('/js/app.js') }}
+    {{ Html::script('/js/myapp.js') }}
     <script>
         var myApp = new myApp;
-        myApp.remove();
+        myApp.init();
     </script>
+    @yield('script')
 </body>
 </html>

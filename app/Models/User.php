@@ -45,6 +45,11 @@ class User extends BaseModel implements
 
     public function rules($ruleName)
     {
+        if ($ruleName == 'update') {
+            return [
+                'name' => 'required'
+            ];
+        }
         return [
             'email' => 'required|email',
             'password' => 'required',
