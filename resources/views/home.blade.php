@@ -14,11 +14,11 @@
                 <div class="col-md-12 view-category">
                     <h4>
                         <span class="badge">{{ config('category.' . ($key + 1)) }}</span>
-                        <span class="title-category">{{ $category->name }}</span>
+                        <span class="title-category"><a href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a></span>
                     </h4>
                     <h5 class="view-all">
-                        <a href="">
-                            <span class="padding-right-5">@lang('categories.view_detail')</span> 
+                        <a href="{{ route('category.show', $category->id) }}">
+                            <span class="padding-right-5">@lang('categories.view_detail')</span>
                             <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                         </a>
                     </h5>
@@ -27,7 +27,7 @@
                     <div class="col-md-4 row">
                         @foreach ($category->categories as $key => $value)
                             <div class="col-md-4 padding-zero block-sub-category">
-                                <a href="" class="col-md-12">
+                                <a href="{{ route('category.show', $value->id) }}" class="col-md-12">
                                     <img src="{{ $value->image }}" width="75" height="75">
                                     <div>{{ $value->name }}</div>
                                 </a>

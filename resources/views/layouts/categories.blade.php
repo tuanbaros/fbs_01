@@ -6,13 +6,13 @@
             </a>
             @foreach ($categories as $key => $category)
                 <div class="cate">
-                    <a href="" class="list-group-item item-menu">
+                    <a href="{{ route('category.show', $category->id) }}" class="list-group-item item-menu">
                         <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>{{ $category->name }}
                     </a>
                     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 submenu border-shadow-bottom">
                         <div class="categories list-group border-shadow-bottom">
                             @foreach ($category->categories as $key => $value)
-                                <a href="" class="list-group-item">
+                                <a href="{{ route('category.show', $value->id) }}" class="list-group-item">
                                     <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>{{ $value->name }}
                                 </a>
                             @endforeach

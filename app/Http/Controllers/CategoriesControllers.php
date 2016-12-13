@@ -5,13 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\CategoryRepositoryInterface as CategoryInterface;
 
-class HomeController extends Controller
+class CategoriesControllers extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     private $categoryRepository;
 
     public function __construct(CategoryInterface $categoryInterface)
@@ -19,15 +14,12 @@ class HomeController extends Controller
         $this->categoryRepository = $categoryInterface;
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function showProductInCategory($id)
     {
+        $category = $this->categoryRepository->find($id);
+        $data['categoryShow'] = $category;
         $data['categories'] = $this->categoryRepository->getCategory(config('view.take-category'));
 
-        return view('home', $data);
+        return view('category', $data);
     }
 }

@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/', ['uses' => 'HomeController@index']);
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+
+Route::get('/categories/{id}/products', ['as' => 'category.show',
+    'uses' => 'CategoriesControllers@showProductInCategory']);
 
 Auth::routes();
 
