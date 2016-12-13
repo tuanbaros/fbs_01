@@ -10,6 +10,28 @@ use App\Models\BaseModel;
 
 class Category extends BaseModel
 {
+    protected $table = 'categories';
+
+    protected $fillable = ['name', 'parent_id', 'sort'];
+
+    public function rules($ruleName)
+    {
+        if ($ruleName == 'update') {
+            $nameRules = 'required|max:50|unique:categories,name,' . $this->id;
+        } else {
+            $nameRules = 'required|max:50|unique:categories,name';
+        }
+        return [
+            'name' => $nameRules,
+            'sort' => 'required|numeric'
+        ];
+    }
+
+    public function scopeFindCate($query, $id)
+    {
+        return $query->where('parent_id', $id)->get();
+    }
+
     public function products()
     {
         return $this->hasMany(Product::class);
