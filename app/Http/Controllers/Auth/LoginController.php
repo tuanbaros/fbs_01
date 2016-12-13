@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-use App\Repositories\Eloquent\UserRepository;
+use App\Repositories\Contracts\UserRepositoryInterface as UserInterface;
 use Auth;
 use Socialite;
 
@@ -31,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -41,7 +41,7 @@ class LoginController extends Controller
     
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserInterface $userRepository)
     {
         $this->middleware('guest', ['except' => 'logout']);
         $this->userRepository = $userRepository;
@@ -72,7 +72,7 @@ class LoginController extends Controller
             return redirect('auth/' . $provider);
         }
  
-        return redirect('/home');
+        return redirect('/');
     }
 
     protected function login(Request $request)

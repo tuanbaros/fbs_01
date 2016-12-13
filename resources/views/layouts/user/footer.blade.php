@@ -18,8 +18,8 @@
             <div class="col_1_of_4 span_1_of_4">
                 <h4>@lang('footer.my-account')</h4>
                 <ul>
-                    <li><a href="">@lang('footer.login')</a></li>
-                    <li><a href="">@lang('footer.register')</a></li>                 
+                    <li><a href="{{ url('/login') }}">@lang('footer.login')</a></li>
+                    <li><a href="{{ url('/register') }}">@lang('footer.register')</a></li>                 
                 </ul>
             </div>
             <div class="col_1_of_4 span_1_of_4">

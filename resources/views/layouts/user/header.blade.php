@@ -11,17 +11,27 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                @if (Auth::guest())
+                    <li><a class="shop-name" href="{{ url('/login') }}">@lang('login.login')</a></li>
+                    <li><a class="shop-name" href="{{ url('/register') }}">@lang('register.register')</a></li>
+                @else
                 <li class="dropdown">
                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            @lang('header.username') <span class="caret"></span>
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href=""><i class="fa fa-btn fa-edit"> @lang('header.profile')</i></a></li>
-                            <li><a href=""><i class="fa fa-btn fa-sign-out"></i> @lang('header.logout')</a></li>
+                            <li><a href="{{ route('users.edit', Auth::user()) }}"><i class="fa fa-btn fa-edit">
+                             @lang('header.profile')</i></a></li>
+                            <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> @lang('header.logout')</a> 
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
                         </ul>
                     </li>
                 </li>
+                @endif
             </ul>
         </div>   
     </div>
