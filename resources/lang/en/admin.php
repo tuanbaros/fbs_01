@@ -29,5 +29,23 @@ return [
         'index' => 'Index',
         'edit' => 'Edit',
         'delete' => 'Delete'
+    ],
+
+    'user' => [
+        'name' => 'Name',
+        'email' => 'Email',
+        'phone' => 'Phone',
+        'avatar' => 'Avatar',
+        'shop-name' => 'Shop Name',
+        'active' => 'Active',
+        'none' => 'Not Found',
+        'default-avatar' => 'http://ybox.vn/images/avatar-default.png',
+        'active' => 'Active',
+        'actived' => 'Disable',
+        'delete' => 'Delete',
+        'update_user_success' => 'Update User Success',
+        'delete_success' => 'Delete User Success',
+        'not_search_user' => 'User Not Found',
+        'manage' => 'Manage User'
     ]
 ];
