@@ -9,4 +9,5 @@ return [
         'category' => 'Category',
         'description' => 'Description'
     ],
+    'home' => 'Home'
 ];

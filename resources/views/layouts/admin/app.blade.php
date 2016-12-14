@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') }}">
         <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2') }}">
+        <link rel="stylesheet" href="{{ asset('/bower_components/sweetalert2/dist/sweetalert2.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/layout.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
@@ -25,4 +26,10 @@
             @yield('content')
         </div>
     </body>
+    <script src="{{ asset('/js/myapp.js') }}"></script>
+    <script>
+        var myApp = new myApp;
+        myApp.init();
+    </script>
+    @yield('script')
 </html>
