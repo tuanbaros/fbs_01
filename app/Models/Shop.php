@@ -12,6 +12,25 @@ use App\Models\BaseModel;
 
 class Shop extends BaseModel
 {
+    protected $table = 'shops';
+
+    protected $fillable = ['name', 'address', 'description', 'status', 'user_id', 'category_id'];
+
+    public function rules($ruleName)
+    {
+        if ($ruleName == 'update') {
+            $nameRules = 'required|max:50|unique:shops,name,' . $this->id;
+        } else {
+            $nameRules = 'required|max:50|unique:shops,name';
+        }
+        
+        return [
+            'name' => $nameRules,
+            'address' => 'required',
+            'category_id' => 'required|exists:categories,id',
+        ];
+    }
+
     public function follows()
     {
         return $this->hasMany(Follow::class);

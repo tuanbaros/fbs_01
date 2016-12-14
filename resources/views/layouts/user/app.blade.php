@@ -21,7 +21,6 @@
     <body>
         @include('layouts.user.header')
         <div class="container">
-            @include('layouts.user.categories')
             @yield('content')
         </div>
         @include('layouts.user.footer')
