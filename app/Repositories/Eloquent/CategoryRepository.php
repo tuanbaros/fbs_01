@@ -4,11 +4,13 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use Prettus\Repository\Eloquent\BaseRepository;
+use Illuminate\Container\Container as Application;
 use App\Models\Category;
 use Lang;
 
-class CategoryRepository extends BaseRepository implements CategoryRepositoryInterface
+class CategoryRepository extends BaseRepository implements CategoryRepositoryInterface 
 {
+ 
     public function model()
     {
         return Category::class;
@@ -44,5 +46,12 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     public function getSubCategory($id)
     {
         return $this->model->where('parent_id', $id)->get();
+    }
+    
+    public function getCategory($take = 9)
+    {
+        return $this->model->where('sort', '<>', 0)
+            ->where('parent_id', null)
+            ->orderBy('sort', 'asc')->take($take)->get();
     }
 }
