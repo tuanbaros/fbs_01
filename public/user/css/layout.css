@@ -98,6 +98,11 @@
     margin-top: 10px;
 }
 
+.block-product-home a.img-product .image-product {
+    width: 100%;
+    height: 110px;
+}
+
 .block-product-home div.product-name {
     height: 40px;
     padding: 0 5px;
