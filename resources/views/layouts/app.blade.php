@@ -27,4 +27,9 @@
         @yield('content')
         @include('layouts.footer')
     </body>
+    <script src="{{ asset('/js/myapp.js') }}"></script>
+    <script>
+        var myApp = new myApp;
+        myApp.init();
+    </script>
 </html>

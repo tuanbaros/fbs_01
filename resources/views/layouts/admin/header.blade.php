@@ -8,6 +8,8 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="{{ url('/') }}">@lang('header.home')</a>
+            <a class="navbar-brand" href="{{ url('/admin/users') }}">@lang('admin.users')</a>
+            <a class="navbar-brand" href="{{ url('/admin/category') }}">@lang('admin.categories')</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">

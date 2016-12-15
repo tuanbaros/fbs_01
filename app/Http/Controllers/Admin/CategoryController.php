@@ -18,7 +18,8 @@ class CategoryController extends Controller
 
     public function index()
     {
-        $categories = $this->categoryRepository->paginate(config('view.paginate'));
+        $categories = $this->categoryRepository->all();
+
         return view('admin.category.index', compact('categories'));
     }
 
