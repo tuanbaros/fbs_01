@@ -52,4 +52,19 @@ class Category extends BaseModel
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
+
+    public function productsThrough($take = null)
+    {
+        $result = $this->hasManyThrough( Product::class, Category::class,
+            'parent_id', 'category_id')->orderBy('created_at', 'desc');
+
+        switch ($take) {
+            case 'all':
+                return $result;
+            case null:
+                return $result->limit(config('view.take-product'));
+            default:
+                return $result->limit($take);
+        }
+    }
 }

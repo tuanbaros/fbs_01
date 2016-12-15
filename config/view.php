@@ -39,4 +39,5 @@ return [
     'yes' => 'Yes',
     'no' => 'No',
     'take-category' => 9,
+    'take-product' => 8,
 ];
