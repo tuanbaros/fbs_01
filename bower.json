@@ -25,6 +25,7 @@
     "jquery-timeago": "^1.5.3",
     "eonasdan-bootstrap-datetimepicker": "^4.17.43",
     "bootstrap-datepicker": "^1.6.4",
-    "bootstrap-star-rating": "^4.0.1"
+    "bootstrap-star-rating": "^4.0.1",
+    "jquery.easyPaginate": "https://github.com/st3ph/jquery.easyPaginate.git"
   }
 }

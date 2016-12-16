@@ -34,7 +34,7 @@ class Category extends BaseModel
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class)->orderBy('created_at', 'desc');
     }
 
     public function shops()
@@ -66,5 +66,11 @@ class Category extends BaseModel
             default:
                 return $result->limit($take);
         }
+    }
+
+    public function allProductsByCate()
+    {
+        return $result = $this->hasManyThrough( Product::class, Category::class,
+            'parent_id', 'category_id')->orderBy('created_at', 'desc');
     }
 }

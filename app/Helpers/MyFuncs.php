@@ -28,4 +28,16 @@ class MyFuncs
             $message->subject($content['subject']);
         });
     }
+
+    public static function getListProduct($categoryShow)
+    {
+        $listProduct = null;
+        if ($categoryShow->parent_id == null) {
+            $listProduct = $categoryShow->allProductsByCate;
+        } else {
+            $listProduct = $categoryShow->products;
+        }
+
+        return $listProduct;
+    }
 }
