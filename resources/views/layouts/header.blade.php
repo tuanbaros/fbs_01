@@ -48,16 +48,16 @@
             </a>
         </div>
         <div class="col-md-4 col-sm-4 col-xs-4">
-            <form class="header-search col-md-12 col-sm-12 col-xs-12">
+            {!! Form::open(['route' => 'searchProduct', 'class' => 'header-search col-md-12 col-sm-12 col-xs-12', 'method' => 'get']) !!}
                 <div class="input-group">
-                    <input type="text" class="form-control search" placeholder="Search">
+                    {!! Form::text('search', null, ['class' => 'form-control search', 'placeholder' => 'Search']) !!}
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </div>
                 </div>
-            </form>
+            {!! Form::close() !!}
         </div>
     </div>
 </div>
