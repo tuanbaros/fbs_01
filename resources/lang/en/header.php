@@ -8,4 +8,5 @@ return [
     'logout' => 'Logout',
     'all' => 'All',
     'action' => 'Action',
+    'create_shop' => 'Create Shop'
 ];

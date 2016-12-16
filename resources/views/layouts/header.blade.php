@@ -23,6 +23,10 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ route('users.edit', Auth::user()) }}"><i class="fa fa-btn fa-edit">
                              @lang('header.profile')</i></a></li>
+                            <li><a href="{{ route('user.shop.create') }}">
+                                <i class="fa fa-btn fa-edit">
+                                @lang('header.create_shop')</i></a>
+                            </li>
                             <li><a id="logout" href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> @lang('header.logout')</a> 
                                 <form id="logout-form" action="{{ url('/logout') }}" method="POST">
                                     {{ csrf_field() }}

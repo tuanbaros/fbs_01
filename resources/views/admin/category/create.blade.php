@@ -12,8 +12,9 @@
             </div>
 
             <div class="col-lg-7 col-lg-offset-1">
-                {!! Form::open(['route' => 'category.store']) !!}
+                {!! Form::open(['route' => 'admin.category.store']) !!}
                     @include('admin.shared.error')
+                    @include('admin.shared.flash')
 
                     <div class="form-group">
                         {!! Form::label('name', Lang::get('admin.category', ['name' => 'Name'])) !!}
