@@ -38,19 +38,21 @@
                         @foreach ($category->productsThrough as $key => $product)
                             <div class="col-md-3 padding-zero block-product-home">
                                 <div class="height-120p">
-                                    <a href="" class="col-md-12 img-product">
+                                    <a href="{{ route('product.show', $product->id) }}" class="col-md-12 img-product">
                                         @if (count($product->images) > 0)
                                             <img src="{{ $product->images[0]->url }}" class="image-product">
                                         @endif
                                     </a>
                                 </div>
-                                <div class="text-align-center product-name"><a href="">{{ $product->name }}</a></div>
+                                <div class="text-align-center product-name">
+                                    <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a>
+                                </div>
                                 <div class="product-price">
                                     <span class="price">{{ number_format($product->price, 0) }} @lang('home.currency')</span>
                                 </div>
                                 <div>
                                     <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
-                                    <input type="button" class="button btn-add-cart" value="Add Cart">
+                                    <input type="button" class="button btn-add-cart" value="@lang('categories.addCart')">
                                 </div>
                             </div>
                         @endforeach

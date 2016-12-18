@@ -19,6 +19,8 @@ Route::get('/categories/{id}/products', ['as' => 'category.show',
 Route::get('/searchProduct', ['as' => 'searchProduct',
     'uses' => 'HomeController@searchProduct']);
 
+Route::resource('/product', 'ProductController');
+
 Auth::routes();
 
 Route::get('auth/{provider}', [

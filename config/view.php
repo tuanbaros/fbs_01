@@ -40,4 +40,5 @@ return [
     'no' => 'No',
     'take-category' => 9,
     'take-product' => 8,
+    'similar-product' => 6,
 ];

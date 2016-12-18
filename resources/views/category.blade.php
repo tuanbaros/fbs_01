@@ -17,8 +17,8 @@
                         @if ($categoryShow != null)
                             @if ($categoryShow->parent_id != null)
                                 <li>
-                                    <a href="{{ route('category.show', $categoryShow->category->id) }}">
-                                        {{ $categoryShow->category->name }}
+                                    <a href="{{ route('category.show', $categoryShow->parent->id) }}">
+                                        {{ $categoryShow->parent->name }}
                                     </a>
                                 </li>
                             @endif
@@ -53,9 +53,6 @@
                         <div class="title-filter">
                             <h3>@lang('categories.filter')</h3>
                         </div>
-                        <div>
-                            
-                        </div>
                         <div class="search">
                             <input type="button" value="@lang('categories.search')" class="button btn-search-product">
                         </div>
@@ -67,21 +64,21 @@
                         @foreach (MyFuncs::getListProduct($categoryShow) as $key => $product)
                             <div class="col-md-3 padding-zero block-product-category">
                                 <div class="height-140p">
-                                    <a href="" class="col-md-12 img-product">
+                                    <a href="{{ route('product.show', $product->id) }}" class="col-md-12 img-product">
                                         @if (count($product->images) > 0)
                                             <img src="{{ asset($product->images[0]->url) }}" class="img-product-category">
                                         @endif  
                                     </a>
                                 </div>
-                                <div class="text-align-center product-name"><a href="">{{ $product->name }}</a></div>
+                                <div class="text-align-center product-name">
+                                    <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a>
+                                </div>
                                 <div class="product-price">
                                     <span>{{ number_format($product->price, 0) }} @lang('home.currency')</span>
                                 </div>
                                 <div>
-                                    <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
+                                    <input name="input-start" value="{{ $product->point_rate }}" class="input-start rating" readonly="true">
                                     <input type="button" class="button btn-add-cart" value="@lang('categories.addCart')">
-                                </div>
-                                <div>
                                 </div>
                             </div>
                         @endforeach
@@ -94,9 +91,11 @@
     <script type="text/javascript" src="{{ asset('user/js/category.js') }}"></script>
     <script type="text/javascript">
         var category = new category();
-        category.init({
-            parent_id: {{ ($categoryShow->parent_id) == null ? 'null' : $categoryShow->parent_id }},
-            category_id: {{ $categoryShow->id }},
+        $(function() {
+            category.init({
+                parent_id: {{ ($categoryShow->parent_id) == null ? 'null' : $categoryShow->parent_id }},
+                category_id: {{ $categoryShow->id }},
+            });
         });
     </script>
 @endsection
