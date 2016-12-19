@@ -57,6 +57,12 @@
     box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.5);
 }
 
+.block-product-home:hover {
+    -webkit-box-shadow: 0 0 20px 0 rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 0 20px 0 rgba(0,0,0,0.75);
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.75);
+}
+
 .button.btn-add-cart {
     position: absolute;
     bottom: 5px;

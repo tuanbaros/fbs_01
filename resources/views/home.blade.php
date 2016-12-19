@@ -61,4 +61,5 @@
             @endforeach
         </div>
     </div>
+    <script type="text/javascript" src="{{ asset('user/js/home.js') }}"></script>
 @endsection

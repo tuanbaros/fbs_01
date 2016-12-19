@@ -11,4 +11,5 @@ return [
     'count-product' => 'Số sản phẩm',
     'collection' => 'Bộ sưu tập',
     'not-found-shop' => 'Không tìm thấy shop',
+    'category-shop' => 'Danh mục',
 ];

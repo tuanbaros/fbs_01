@@ -23,6 +23,9 @@ Route::resource('/product', 'ProductController');
 
 Route::resource('shop', 'ShopController');
 
+Route::get('shopCollection/{id}', [ 'as' => 'shopCollection.show',
+    'uses' => 'ShopController@shopCollection']);
+
 Auth::routes();
 
 Route::get('auth/{provider}', [
