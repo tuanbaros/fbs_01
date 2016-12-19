@@ -75,17 +75,17 @@
                     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 border-shadow-bottom view-shop">
                             <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 avatar-shop">
-                                <a href="">
-                                    <img src="{{ asset('images/avatar.jpg') }}" width="50" height="50">
+                                <a href="{{ route('shop.show', $product->shop->id) }}">
+                                    <img src="{{ asset($product->shop->image) }}" width="50" height="50">
                                 </a>
                             </div>
                             <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 row block-shop-info">
-                                <a href="" class="shop-name">
+                                <a href="{{ route('shop.show', $product->shop->id) }}" class="shop-name">
                                     <span>{{ $product->shop->name }}</span>
                                 </a>
                                 <div class="view-follow-shop-info">
                                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 row view">
-                                        <a href="" class="btn-button button4">@lang('product.view')</a>
+                                        <a href="{{ route('shop.show', $product->shop->id) }}" class="btn-button button4">@lang('product.view')</a>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 follow">
                                         <a href="" class="btn-button button4">@lang('product.follow')</a>

@@ -48,7 +48,7 @@ class Shop extends BaseModel
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class)->orderBy('created_at', 'desc');
     }
 
     public function category()

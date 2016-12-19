@@ -21,6 +21,8 @@ Route::get('/searchProduct', ['as' => 'searchProduct',
 
 Route::resource('/product', 'ProductController');
 
+Route::resource('shop', 'ShopController');
+
 Auth::routes();
 
 Route::get('auth/{provider}', [
