@@ -22,8 +22,8 @@
                             <th class="colum">@lang('admin.category', ['name' => 'Name'])</th>
                             <th class="colum">@lang('admin.sort')</th>
                             <th class="colum" width="10%">@lang('admin.label.edit')</th>
-                            <th class="colum" width="10%">@lang('admin.label.delete')</th>
-                            <th class="colum">@lang('admin.sub_category')</th>
+                            <th class="colum" width="10%">@lang('admin.label.action')</th>
+                            <th class="colum">@lang('admin.parent_category')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,12 +36,15 @@
                                     <i class="fa fa-pencil fa-fw"></i>
                                 </td>
                                 <td class="center" width="10%">
+                                    <i class="fa fa-trash"></i>
                                 </td>
+                                @if ($category->parent)
                                 <td width="10%">
-                                    <button class="btn btn-primary" data-toggle="modal"
-                                        data-target=".bs-example-modal-lg">@lang('admin.sub')
-                                    </button>
+                                    {{ $category->parent->name }}
                                 </td>
+                                @else
+                                    <td></td>
+                                @endif
                             </tr>
                         @endforeach
                     </tbody>
@@ -49,19 +52,24 @@
             @else
                 <h4 align="center">@lang('admin.message.empty_data', ['name' => 'Category'])</h4>
             @endif
-            <div class='col-lg-7' align='right'>
-                {!! $categories->render() !!}
-            </div>
         </div>
     </div>
 </div>
 
-<div class="modal fade bs-example-modal-lg"
+<div class="modal fade bs-example-modal-sm"
     tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
-        aaaa
         </div>
     </div>
 </div>
 @stop
+
+@section('script')
+    <script src="{{ asset('/js/dttable.js') }}"></script>
+    <script src="{{ asset('/js/category.js') }}"></script>
+    <script>
+        var dttable = new dttable();
+        dttable.init('#dataTables-example');
+    </script>
+@endsection

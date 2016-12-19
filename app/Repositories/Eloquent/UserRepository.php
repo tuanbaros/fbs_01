@@ -84,7 +84,10 @@ class UserRepository extends BaseRepository implements UserRepositoryInterface
 
                 return back()->with('warning', Lang::get('register.please.active'));
             }
-
+            if (auth()->user()->is_admin) {
+                return redirect('/admin/users');
+            }
+            
             return redirect()->to('/');
         }
         

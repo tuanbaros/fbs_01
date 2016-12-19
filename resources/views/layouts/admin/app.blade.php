@@ -9,6 +9,7 @@
         <meta name="_token" content="{{ csrf_token() }}">
         <title>@yield('title')</title>
         <script type="text/javascript" src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
+        <script src="{{ asset('/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.css') }}">
@@ -16,9 +17,11 @@
         <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff') }}">
         <link rel="stylesheet" href="{{ asset('bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2') }}">
         <link rel="stylesheet" href="{{ asset('/bower_components/sweetalert2/dist/sweetalert2.css') }}">
+        <link rel="stylesheet" href="{{ asset('/bower_components/datatables.net-dt/css/jquery.dataTables.min.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/layout.css') }}">
         <link rel="stylesheet" href="{{ asset('user/css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('admin/css/custom.css') }}">
+        @yield('style')
     </head>
     <body>
         @include('layouts.admin.header')

@@ -48,7 +48,7 @@ class Category extends BaseModel
             ->where('sort', '<>', 0)->orderBy('sort', 'asc');
     }
 
-    public function category()
+    public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }

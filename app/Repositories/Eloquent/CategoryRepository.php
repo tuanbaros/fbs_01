@@ -30,11 +30,13 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
     {
         if ($this->validate($data, 'create')) {
             $this->model->create($data);
+            
             return redirect()->route('admin.category.index')->with([
                 'flash_level' => Lang::get('admin.success'),
                 'flash_message' => Lang::get('admin.message.add_success', ['name' => 'Category'])
             ]);
         }
+        
         return redirect()->back()->withErrors($this->model->valid());
     }
 

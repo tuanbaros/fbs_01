@@ -28,8 +28,6 @@
                             <th class="colum">@lang('admin.user.phone')</th>
                             <th class="colum">@lang('admin.user.avatar')</th>
                             <th class="colum">@lang('admin.user.active')</th>
-                            <th class="colum" width="10%">@lang('admin.label.delete')</th>
-                            <th class="colum">@lang('admin.user.shop-name')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,26 +54,7 @@
                                             @endif
                                         {!! Form::close() !!}
                                     </td>
-                                    <td class="center" width="10%">
-                                        {!! Form::open(['method' => 'DELETE', 'route' => ['admin.users.destroy', $user], 
-                                            'id' => $user->id]) !!}
-                                            {!! Form::submit(Lang::get('admin.user.delete'), ['class' => 'btn btn-danger', 
-                                                'id' => $user->id]) !!}
-                                                <input type="hidden" user-id="{{ $user->id }}" id="delete">
-                                        {!! Form::close() !!}
-                                    </td>
-                                    @if(!empty($user->shop->name))
-                                        <td width="10%">
-                                            <button class="btn btn-primary" data-toggle="modal"
-                                                data-target=".bs-example-modal-lg">{{ $user->shop->name }}
-                                            </button>
-                                        </td>
-                                    @else
-                                        <td></td>
-                                    @endif
                                 @else
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                 @endif
                             </tr>
@@ -85,20 +64,20 @@
             @else
                 <h4 align="center">@lang('admin.message.empty_data', ['name' => 'Category'])</h4>
             @endif
-            <div class='col-lg-7' align='right'>
-                {!! $users->render() !!}
-            </div>
         </div>
     </div>
 </div>
-
 @stop
 
 @section('script')
     <script src="{{ asset('/bower_components/sweetalert2/dist/sweetalert2.min.js') }}"></script>
     <script src="{{ asset('/js/users.js') }}"></script>
+    <script src="{{ asset('/js/dttable.js') }}"></script>
+    <script src="{{ asset('/js/category.js') }}"></script>
     <script>
         var users = new users();
         users.init();
+        var dttable = new dttable();
+        dttable.init('#dataTables-example');
     </script>
 @stop
