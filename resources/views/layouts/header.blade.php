@@ -15,6 +15,7 @@
                     <li><a class="shop-name" href="{{ url('/login') }}">@lang('login.login')</a></li>
                     <li><a class="shop-name" href="{{ url('/register') }}">@lang('register.register')</a></li>
                 @else
+                <li><a href="{{ route('user.cart.index') }}">@lang('user.cart.title')</a></li>
                 <li class="dropdown">
                     <li class="dropdown">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

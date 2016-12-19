@@ -61,8 +61,8 @@
                                 <span class="operator">+</span>
                                 <span class="avarible-product">{{ $product->quantity }} @lang('product.availible')</span>
                             </div>
-                            <div class="add-product-in-cart">
-                                <input type="button" class="btn-add-cart-product-detail" value="@lang('categories.addCart')">
+                            <div class="add-product-in-cart cart">
+                                <input type="button" class="btn-add-cart-product-detail" product-id="{{ $product->id }}" value="@lang('categories.addCart')">
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 border-shadow-bottom security-shop">
@@ -166,9 +166,9 @@
                                     <div class="product-price">
                                         <span>{{ number_format($value->price, 0) }} @lang('home.currency')</span>
                                     </div>
-                                    <div>
+                                    <div class="cart">
                                         <input name="input-start" value="{{ $value->point_rate }}" class="rating input-start" readonly="true">
-                                        <input type="button" class="button btn-add-cart" value="@lang('categories.addCart')">
+                                        <input type="button" class="button btn-add-cart" product-id="{{ $value->id }}" value="@lang('categories.addCart')">
                                     </div>
                                     <div>
                                     </div>
@@ -186,4 +186,14 @@
             @lang('product.not-found-product')
         </div>
     @endif
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/addcart.js') }}"></script>
+    <script>
+        var addCart = new addcart();
+        addCart.init('.btn-add-cart');
+        var addCart1 = new addcart();
+        addCart1.init('.btn-add-cart-product-detail');
+    </script>
 @endsection

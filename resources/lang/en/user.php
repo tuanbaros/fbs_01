@@ -18,5 +18,19 @@ return [
     'message' => [
         'create_shop' => 'User Created Shop!',
         'create_success' => 'Create Success'
+    ],
+
+    'cart' => [
+        'title' => 'Giỏ hàng',
+        'item' => 'Sản phẩm',
+        'price' => 'Đơn giá',
+        'quantity' => 'Số lượng', 
+        'sum' => 'Thành tiền',
+        'clear-all' => 'Xóa tất cả',
+        'total' => 'Tổng cộng',
+        'checkout' => 'Thanh toán',
+        'no-item' => 'You have no items in the shopping cart',
+        'shopping' => 'Mua sắm ngay',
+        'vnd' => 'VNĐ'
     ]
 ];

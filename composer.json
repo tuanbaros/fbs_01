@@ -11,7 +11,8 @@
         "laravel/socialite": "^2.0",
         "doctrine/dbal": "v2.4.2",
         "prettus/l5-repository": "^2.6",
-        "fzaninotto/faker": "^1.6"
+        "fzaninotto/faker": "^1.6",
+        "gloudemans/shoppingcart": "^2.2"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

@@ -50,9 +50,9 @@
                                 <div class="product-price">
                                     <span class="price">{{ number_format($product->price, 0) }} @lang('home.currency')</span>
                                 </div>
-                                <div>
+                                <div class="cart">
                                     <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
-                                    <input type="button" class="button btn-add-cart" value="@lang('categories.addCart')">
+                                    <input type="button" product-id="{{ $product->id }}" class="button btn-add-cart" value="@lang('categories.addCart')">
                                 </div>
                             </div>
                         @endforeach
@@ -62,4 +62,13 @@
         </div>
     </div>
     <script type="text/javascript" src="{{ asset('user/js/home.js') }}"></script>
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/lang.js') }}"></script>
+    <script src="{{ asset('js/addcart.js') }}"></script>
+    <script>
+        var addCart = new addcart();
+        addCart.init('.btn-add-cart');
+    </script>
 @endsection

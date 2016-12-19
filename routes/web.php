@@ -52,6 +52,30 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth', 'as' => 'user.'], function() {
     Route::resource('shop', 'ShopController');
+
+    Route::resource('cart', 'CartController', [ 'only' => [
+        'index', 'store'
+    ]]);
+
+    Route::get('cart/clear-cart', [
+        'as' => 'cart.clear',
+        'uses' => 'CartController@clearCart'
+    ]);
+
+    Route::post('cart/remove', [
+        'as' => 'cart.remove',
+        'uses' => 'CartController@destroy'
+    ]);
+
+    Route::get('cart/up', [
+        'as' => 'cart.up',
+        'uses' => 'CartController@upQuantity'
+    ]);
+
+    Route::get('cart/down', [
+        'as' => 'cart.down',
+        'uses' => 'CartController@downQuantity'
+    ]);
 });
 
 Route::get('/home', 'HomeController@index');
