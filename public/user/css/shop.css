@@ -1,0 +1,86 @@
+.btn-button {
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    color: white;
+    padding: 3px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    width: 100%;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button4 {
+    border: 1px solid #e7e7e7;
+}
+
+.button4:hover {
+    background-color: rgba(231, 231, 231, 0.5);
+}
+
+.block-product-category .image-product-all {
+    width: 100%;
+    height: 130px;
+}
+
+.block-info-detail-shop {
+    height: 120px;
+    background: #fff;
+}
+
+.block-info-detail-shop .avatar-shop {
+    background: red;
+    height: 120px;
+    color: #fff;
+    padding: 0;
+}
+
+.block-info-detail-shop .block-in {
+    height: 120px;
+    background: rgba(0,0,0,.4);
+}
+
+.block-info-detail-shop .img-avatar {
+    border-radius: 40px;
+    margin-top: 10px;
+}
+
+.block-info-detail-shop .block-info-in-shop {
+    height: 60px;
+    padding: 20px 50px;
+    font-size: 19px;
+    color: #828282;
+}
+
+.block-title-tab {
+    background: #fff;
+    width: 100%;
+    border: none;
+}
+
+.block-detail-tab {
+    background: #fff;
+    margin-top: 10px;
+}
+
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: none;
+    border-radius: 0;
+    border-bottom: 3px solid red;
+}
+
+.nav-tabs > li > a {
+    margin-right: 2px;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 0;
+}

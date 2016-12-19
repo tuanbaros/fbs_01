@@ -22,6 +22,7 @@ class Collection extends BaseModel
 
     public function products()
     {
-        return $this->belongsToMany(Product::class, 'product_collections');
+        return $this->belongsToMany(Product::class, 'product_collections')
+            ->orderBy('created_at', 'desc');
     }
 }
