@@ -6,6 +6,10 @@ body {
     background: #fff;
 }
 
+.background-while {
+    background: #fff;
+}
+
 .wid100 {
     width: 100%;
 }
@@ -98,6 +102,10 @@ ol, ul {
 
 .padding-top-10 {
     padding-top: 10px;
+}
+
+.padding-top-20 {
+    padding-top: 20px;
 }
 
 .padding-right-5 {

@@ -20,4 +20,11 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
     {
         return $this->model->where('name', 'like', '%' . $name . '%');
     }
+
+    public function getSimilarProduct(Product $product, $take)
+    {
+        return $this->model->where('category_id', $product->category_id)
+            ->where('id', '<>', $product->id)
+            ->orderBy('created_at', 'desc')->limit($take);
+    }
 }

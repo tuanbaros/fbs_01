@@ -31,11 +31,11 @@
                 <div class="social-icons">
                     <h4>@lang('footer.follow-us')</h4>
                     <ul>
-                        <li><a href="" target="_blank"><img src="/images/facebook.png" alt="" /></a></li>
-                        <li><a href="" target="_blank"><img src="/images/twitter.png" alt="" /></a></li>
-                        <li><a href="" target="_blank"><img src="/images/skype.png" alt="" /> </a></li>
-                        <li><a href="" target="_blank"> <img src="/images/dribbble.png" alt="" /></a></li>
-                        <li><a href="" target="_blank"> <img src="/images/linkedin.png" alt="" /></a></li>
+                        <li><a href="" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
                         <div class="clear"></div>
                     </ul>
                 </div>
