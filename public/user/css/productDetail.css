@@ -2,6 +2,13 @@
     height: 325px;
 }
 
+#content-comment {
+    width: 500px;
+    height: 70px;
+    max-height: 70px;
+    max-width: 500px;
+}
+
 .btn-add-cart-product-detail {
     background-color: #4CAF50;
     border: none;
@@ -38,8 +45,17 @@
     font-size: 20px;
 }
 
+.block-info-product .block-price span.currency {
+    font-size: 20px;
+}
+
+.block-info-product .block-price span.discount {
+    font-size: 25px;
+    color: #949494;
+}
+
 .block-info-product .discount-price {
-    font-size: 35px;
+    font-size: 30px;
     color: red;
 }
 
@@ -104,6 +120,13 @@
     height: 130px;
 }
 
+.btn-rate {
+    position: absolute;
+    right: 40px;
+    top: 90px;padding: 5px 15px;
+    font-size: 20px;
+}
+
 .btn-button {
     background-color: #4CAF50;
     border: none;
@@ -133,6 +156,10 @@
 .carousel-inner div.item img.img-product {
     width: 100%;
     height: 325px;
+}
+
+.content-rate {
+    padding-top: 10px;
 }
 
 .fa.fa-shield {
@@ -184,8 +211,13 @@
     text-align: center;
 }
 
+.product-price {
+    bottom: -10px;
+}
+
 .product-price span {
     text-decoration: line-through;
+    color: #949494;
 }
 
 .rating-container.rating-animate .star .glyphicon {
@@ -236,5 +268,40 @@
 }
 
 .view-shop .info-in-shop .name {
+    color: #848484;
+}
+
+#vote .block-rate {
+    border-bottom: 1px solid #e7e7e7;
+}
+
+#vote .block-rate .avatar {
+    padding: 20px 10px;
+}
+
+#vote .block-rate .avatar img {
+    border-radius:25px;
+}
+
+#vote .block-rate .block-content {
+    height: 120px;
+}
+
+#vote .block-rate .block-content a.user-name {
+    display: block;
+    height: 40px;
+    padding: 10px 0;
+    font-size: 16px;
+}
+
+#vote .block-rate .block-content div.number-rate {
+    display: block;
+    height: 40px;
+}
+
+#vote .block-rate .block-content div.date-rate {
+    display: block;
+    height: 40px;
+    margin-top: 15px;
     color: #848484;
 }

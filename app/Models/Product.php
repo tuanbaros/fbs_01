@@ -13,9 +13,12 @@ use App\Models\BaseModel;
 
 class Product extends BaseModel
 {
+    protected $fillable = ['name', 'code', 'price', 'quantity', 'discount', 
+        'point_rate', 'number_rate', 'description', 'status', 'category_id', 'shop_id'];
+
     public function rates()
     {
-        return $this->hasMany(Rate::class);
+        return $this->hasMany(Rate::class)->orderBy('created_at', 'desc');
     }
 
     public function collections()

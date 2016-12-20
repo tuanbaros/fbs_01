@@ -30,4 +30,7 @@ return [
     'not-found-product' => 'Không tìm thấy sản phẩm',
     'root-price' => 'Giá gốc',
     'saving' => 'Tiết kiệm',
+    'my-vote' => 'Đánh giá của bạn',
+    'list-vote' => 'Danh sách đánh giá',
+    'make-sign-in' => 'Cần đăng nhập để đánh giá sản phẩm'
 ];

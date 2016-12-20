@@ -11,6 +11,6 @@ return [
     'eight' => 'Eight',
     'nine' => 'Nine',
 
-    'currency' => 'VNĐ',
+    'currency' => 'vnđ',
     'percent' => '%',
 ];
