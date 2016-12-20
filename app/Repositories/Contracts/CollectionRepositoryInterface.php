@@ -6,5 +6,5 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 
 interface CollectionRepositoryInterface extends RepositoryInterface
 {
-
+    
 }

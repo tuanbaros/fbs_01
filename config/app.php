@@ -183,6 +183,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
