@@ -67,9 +67,9 @@
                                 <div class="product-price">
                                     <span>{{ number_format($product->price, 0) }} @lang('home.currency')</span>
                                 </div>
-                                <div>
+                                <div class="cart">
                                     <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
-                                    <input type="button" class="button btn-add-cart" value="@lang('categories.addCart')">
+                                    <input type="button" class="button btn-add-cart" product-id="{{ $product->id }}" value="@lang('categories.addCart')">
                                 </div>
                                 <div>
                                 </div>
@@ -82,4 +82,13 @@
     </div>
     <script type="text/javascript" src="{{ asset('bower_components/jquery.easyPaginate/lib/jquery.easyPaginate.js') }}"></script>
     <script type="text/javascript" src="{{ asset('user/js/search.js') }}"></script>
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/lang.js') }}"></script>
+    <script src="{{ asset('js/addcart.js') }}"></script>
+    <script>
+        var addCart = new addcart();
+        addCart.init('.btn-add-cart');
+    </script>
 @endsection

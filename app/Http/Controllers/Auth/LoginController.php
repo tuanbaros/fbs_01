@@ -81,4 +81,19 @@ class LoginController extends Controller
         
         return $this->userRepository->login($data);
     }
+
+    public function logout(Request $request)
+    {
+        $cart = collect(session()->get('cart'));
+
+        $destination = \Auth::logout();
+
+        if (!config('cart.destroy_on_logout')) {
+            $cart->each(function($rows, $identifier) {
+                session()->put('cart.' . $identifier, $rows);
+            });
+        }
+
+        return redirect()->to($destination);
+    }
 }
