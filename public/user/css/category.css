@@ -1,5 +1,5 @@
 .block-product-category {
-    height: 250px;
+    height: 260px;
     background: rgb(253, 253, 253);
     border-right: 1px solid rgba(0,0,0,.05);
     border-bottom: 1px solid rgba(0,0,0,.05);
@@ -33,6 +33,20 @@
     bottom: 10px;
     right: 12px;
     width: 70px;
+    height: 25px;
+}
+
+.block-product-category div.product-price {
+    padding-left: 15px;
+    text-decoration: line-through;
+    height: 25px;
+    margin-top: -7px;
+}
+
+.block-product-category div.discount-price {
+    padding-left: 15px;
+    font-size: 20px;
+    color: red;
     height: 25px;
 }
 

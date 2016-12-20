@@ -12,4 +12,5 @@ return [
     'nine' => 'Nine',
 
     'currency' => 'VNĐ',
+    'percent' => '%',
 ];

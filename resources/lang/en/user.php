@@ -39,7 +39,7 @@ return [
         'no-item' => 'You have no items in the shopping cart',
         'shopping' => 'Mua sắm ngay',
         'vnd' => 'VNĐ'
-    ]
+    ],
 
     'sms' => [
         'update' => 'Update Success',
