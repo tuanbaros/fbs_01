@@ -10,18 +10,18 @@ var category = function() {
         this.data.parent_id = data.parent_id;
         this.data.category_id = data.category_id;
         $('.metismenu').metisMenu();
-        $('.block-product-category').mouseover(function(event) {
-            $(this).css('z-index', '1 !important');
-        });
-        $('.block-product-category').mouseout(function(event) {
-            $(this).css('z-index', '0 !important');
-        });
         $('#list-product').easyPaginate({
             paginateElement: 'div.block-product-category',
             elementsPerPage: 32,
             effect: 'climb'
         });
-
+        $('.block-product-category').hover(
+            function() {
+                $(this).css('z-index', 1);
+            }, function() {
+                $(this).css('z-index', 0);
+            }
+        );
         if (current.data.parent_id == null) {
             var category_current = "#category_" + current.data.category_id;
             $(category_current).css('color', 'red');
