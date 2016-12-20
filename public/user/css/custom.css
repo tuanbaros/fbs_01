@@ -155,6 +155,11 @@ ol, ul {
     color: white;
 }
 
+.cart_info .table-condensed .cart_price p span {
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+
 .colum {
     text-align: center;
 }

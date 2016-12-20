@@ -13,6 +13,11 @@ class CartController extends Controller
     public function index()
     {
         $cart = Cart::instance(Auth::user()->id)->content();
+        foreach ($cart as $key => $item) {
+            if ($item->options['quantity'] < $item->qty) {
+                Cart::instance(Auth::user()->id)->update($item->rowId, ['qty' => $item->options['quantity']]);
+            }
+        }
         
         return view('user.cart.index', compact('cart'));
     }
@@ -21,14 +26,18 @@ class CartController extends Controller
     {
         $product = Product::find($request->id);
         if ($product) {
+            $price = $product->price * (1 - $product->discount / 100);
             Cart::instance(Auth::user()->id)->add([
                 'id' => $product->id,
                 'name' => $product->name,
                 'qty' => 1,
-                'price' => $product->price,
+                'price' => $price,
                 'options' => [
                     'shop_id' => $product->shop_id,
-                    'shop_name' => $product->shop->name
+                    'shop_name' => $product->shop->name,
+                    'discount' => $product->discount,
+                    'old_price' => $product->price,
+                    'quantity' => $product->quantity
                 ]
             ]);
 

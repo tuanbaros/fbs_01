@@ -261,6 +261,7 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('js/lang.js') }}"></script>
     <script src="{{ asset('js/addcart.js') }}"></script>
     <script>
         var addCart = new addcart();

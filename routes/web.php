@@ -90,7 +90,11 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth',
     Route::post('/collection/deleteAjax', [
         'as' => 'collection.postDeleteAjax', 
         'uses' => 'CollectionController@postDeleteAjax'
-    ]);  
+    ]);
+
+    Route::resource('order', 'OrderController', [ 'only' => [
+        'index', 'store'
+    ]]); 
 });
 
 Route::get('/home', 'HomeController@index');

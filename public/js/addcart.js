@@ -28,11 +28,11 @@ var addcart = function() {
             } else if (data == 'not-found') {
                 alert(lang['cart']['not-found']);
             } else {
-                alert(lang['cart']['unauthenticated']);
+                alert(lang['cart']['error']);
             }
         })
         .fail(function() {
-            alert(lang['cart']['error']);
+            alert(lang['cart']['unauthenticated']);
         });
     }
 }

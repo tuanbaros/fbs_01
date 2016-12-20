@@ -19,11 +19,15 @@
                             role="button">{{ $item->options['shop_name'] }}</a>
                         </td>
                         <td class="cart_price">
-                            <p>{{ number_format($item->price) }} @lang('user.cart.vnd')</p>
+                            <p>
+                                <span>
+                                    {{ number_format($item->options['old_price']) }} @lang('user.cart.vnd')
+                                </span>{{ number_format($item->price) }} @lang('user.cart.vnd')
+                            </p>
                         </td>
                         <td class="cart_quantity">
-                            <a class="cart_quantity_up" data-id="{{ $item->rowId }}" href=""> + </a>
-                            <input class="cart_quantity_input" type="text" name="quantity" value="{{ $item->qty }}" autocomplete="off" size="2">
+                            <a class="cart_quantity_up" data-id="{{ $item->rowId }}" data-quantity="{{ $item->options['quantity'] }}" data-qty="{{ $item->qty }}" href=""> + </a>
+                            <input class="cart_quantity_input" type="button" name="quantity" value="{{ $item->qty }}">
                             <a class="cart_quantity_down" data-id="{{ $item->rowId }}" href=""> - </a>
                         </td>
                         <td class="cart_total">
@@ -41,7 +45,7 @@
         <div>
             <div class="total_area">
                 <a class="btn btn-danger update" href="{{ route('user.cart.clear') }}">@lang('user.cart.clear-all')</a>
-                <a class="btn btn-success check_out" href="{{url('checkout')}}">@lang('user.cart.checkout')</a>
+                <a class="btn btn-success check_out" href="{{ route('user.order.index') }}">@lang('user.cart.checkout')</a>
             </div><br>
             <h3 >@lang('user.cart.total'): <span> {{ Cart::subtotal(0) }} @lang('user.cart.vnd')</span></h3>
             <br>

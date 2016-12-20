@@ -46,4 +46,20 @@ return [
         'delete' => 'Delete Success',
         'not_found' => 'Not found',
     ],
+
+    'order' => [
+        'title' => 'Đặt hàng',
+        'name' => 'Họ tên',
+        'address' => 'Địa chỉ',
+        'phone' => 'Số điện thoại',
+        'email' => 'Địa chỉ email',
+        'card-number' => 'Số tài khoản',
+        'code' => 'Mã code (3 hoặc 4 chữ số)',
+        'ex-month' => 'Tháng hết hạn',
+        'ex-year' => 'Năm hết hạn',
+        'error' => 'Đã xảy ra lỗi',
+        'product' => 'Sản phẩm',
+        'total' => 'Tổng thanh toán:',
+        'required' => ':name is required'
+    ],
 ];
