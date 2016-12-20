@@ -28,4 +28,6 @@ return [
     'like' => 'Thích',
     'collection' => 'Bộ sưu tập',
     'not-found-product' => 'Không tìm thấy sản phẩm',
+    'root-price' => 'Giá gốc',
+    'saving' => 'Tiết kiệm',
 ];

@@ -43,12 +43,23 @@
                                             <img src="{{ $product->images[0]->url }}" class="image-product">
                                         @endif
                                     </a>
+                                    <span class="ribbon" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                        {{ $product->discount }}@lang('home.percent')
+                                    </span>
                                 </div>
                                 <div class="text-align-center product-name">
                                     <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a>
                                 </div>
                                 <div class="product-price">
-                                    <span class="price">{{ number_format($product->price, 0) }} @lang('home.currency')</span>
+                                    <span class="price" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                        {{ number_format($product->price, 0) }} @lang('home.currency')
+                                    </span>
+                                </div>
+                                <div class="discount-price">
+                                    <span class="price">
+                                        {{ number_format(MyFuncs::getDiscount($product->price, $product->discount), 0) }}
+                                        @lang('home.currency')
+                                    </span>
                                 </div>
                                 <div class="cart">
                                     <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">

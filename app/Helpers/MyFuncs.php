@@ -40,4 +40,13 @@ class MyFuncs
 
         return $listProduct;
     }
+
+    public static function getDiscount($priceProduct, $discount)
+    {
+        if ($discount > 0) {
+            $priceProduct *= (1 - $discount / 100);
+        }
+
+        return round($priceProduct, -3);
+    }
 }

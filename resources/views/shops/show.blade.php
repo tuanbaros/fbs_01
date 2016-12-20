@@ -48,7 +48,6 @@
                     <ul class="nav nav-tabs border-shadow-bottom block-title-tab">
                         <li class="active"><a href="#shop">@lang('shop.shop')</a></li>
                         <li><a href="#all-product">@lang('shop.all-product')</a></li>
-
                         @if (count($shop->collections) > 0)
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -65,7 +64,6 @@
                                 </ul>
                             </li>
                         @endif
-
                     </ul>
                     <div class="tab-content border-shadow-bottom block-detail-tab">
                         <div id="shop" class="tab-pane fade in active">
@@ -80,9 +78,6 @@
                                     </h4>
                                     <h5 class="view-all">
                                         <a href="{{ route('shopCollection.show', $collection->id) }}">
-                                    <h4><span class="title-category">{{ $collection->name }}</span></h4>
-                                    <h5 class="view-all">
-                                        <a href="javascript:void(0)">
                                             <span class="padding-right-5">@lang('shop.view-all')</span> 
                                             <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                                         </a>
@@ -98,12 +93,23 @@
                                                         <img src="{{ asset($product->images[0]->url) }}" class="image-product-all">   
                                                     @endif 
                                                 </a>
+                                                <span class="ribbon" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                                    {{ $product->discount }}@lang('home.percent')
+                                                </span>
                                             </div>
                                             <div class="text-align-center product-name">
                                                 <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a>
                                             </div>
                                             <div class="product-price">
-                                                <span>{{ number_format($product->price, 0) }} @lang('home.currency')</span>
+                                                <span class="price" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                                    {{ number_format($product->price, 0) }} @lang('home.currency')
+                                                </span>
+                                            </div>
+                                            <div class="discount-price">
+                                                <span class="price">
+                                                    {{ number_format(MyFuncs::getDiscount($product->price, $product->discount), 0) }}
+                                                    @lang('home.currency')
+                                                </span>
                                             </div>
                                             <div>
                                                 <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
@@ -125,12 +131,23 @@
                                                     <img src="{{ asset($product->images[0]->url) }}" class="image-product-all">   
                                                 @endif
                                             </a>
+                                            <span class="ribbon" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                                {{ $product->discount }}@lang('home.percent')
+                                            </span>
                                         </div>
                                         <div class="text-align-center product-name">
                                             <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a>
                                         </div>
                                         <div class="product-price">
-                                            <span>{{ number_format($product->price, 0) }} @lang('home.currency')</span>
+                                            <span class="price" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                                {{ number_format($product->price, 0) }} @lang('home.currency')
+                                            </span>
+                                        </div>
+                                        <div class="discount-price">
+                                            <span class="price">
+                                                {{ number_format(MyFuncs::getDiscount($product->price, $product->discount), 0) }}
+                                                @lang('home.currency')
+                                            </span>
                                         </div>
                                         <div>
                                             <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">

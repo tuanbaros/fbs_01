@@ -25,7 +25,9 @@
                         <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 border-shadow-bottom block-left-info-shop">
                             <div class="image-background">
                                 <div class="block-info">
-                                    <img src="{{ asset($collection->shop->image) }}" class="image-avatar" width="100" height="100">
+                                    <a href="{{ route('shop.show', $collection->shop->id) }}" class="name-shop">
+                                        <img src="{{ asset($collection->shop->image) }}" class="image-avatar" width="100" height="100">
+                                    </a>
                                     <div class="margin-top-10 text-align-center">
                                         <span>
                                             <h3>
@@ -95,12 +97,23 @@
                                                         <img src="{{ asset($product->images[0]->url) }}" class="image-product">   
                                                     @endif 
                                                 </a>
+                                                <span class="ribbon" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                                    {{ $product->discount }}@lang('home.percent')
+                                                </span>
                                             </div>
                                             <div class="text-align-center product-name">
                                                 <a href="{{ route('product.show', $product->id) }}">{{ $product->name }}</a>
                                             </div>
                                             <div class="product-price">
-                                                <span>{{ number_format($product->price, 0) }} @lang('home.currency')</span>
+                                                <span class="price" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                                    {{ number_format($product->price, 0) }} @lang('home.currency')
+                                                </span>
+                                            </div>
+                                            <div class="discount-price">
+                                                <span class="price">
+                                                    {{ number_format(MyFuncs::getDiscount($product->price, $product->discount), 0) }}
+                                                    @lang('home.currency')
+                                                </span>
                                             </div>
                                             <div>
                                                 <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">

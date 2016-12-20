@@ -23,13 +23,13 @@ class ShopController extends Controller
     {
         $data['shop'] = $this->shopRepository->find($id);
 
-        return view('shop.show', $data);
+        return view('shops.show', $data);
     }
 
     public function shopCollection($id)
     {
         $data['collection'] = $this->collectionRepository->find($id);
 
-        return view('shop.shopCollection', $data);
+        return view('shops.collection', $data);
     }
 }
