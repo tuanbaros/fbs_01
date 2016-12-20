@@ -20,7 +20,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/bootstrap/fonts/glyphicons-halflings-regular.woff2') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('user/css/layout.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('user/css/custom.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/bootstrap-star-rating/css/star-rating.css') }}">    
+        <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/bootstrap-star-rating/css/star-rating.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('user/css/shop.css') }}">    
     </head>
     <body>
         @include('layouts.header')

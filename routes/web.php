@@ -76,6 +76,18 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth',
         'as' => 'cart.down',
         'uses' => 'CartController@downQuantity'
     ]);
+
+    Route::resource('collection', 'CollectionController');
+
+    Route::post('/collection/updateAjax', [
+        'as' => 'collection.postUpdateAjax', 
+        'uses' => 'CollectionController@postUpdateAjax'
+    ]);
+
+    Route::post('/collection/deleteAjax', [
+        'as' => 'collection.postDeleteAjax', 
+        'uses' => 'CollectionController@postDeleteAjax'
+    ]);  
 });
 
 Route::get('/home', 'HomeController@index');

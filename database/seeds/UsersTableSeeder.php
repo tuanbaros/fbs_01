@@ -28,5 +28,13 @@ class UsersTableSeeder extends Seeder
                 'is_admin' => 0
             ]);
         }
+
+        DB::table('users')->insert([
+            'name' => 'Nguyen Thanh Tuan',
+            'email'  => 'tuan@gmail.com',
+            'password' => bcrypt('123456'),
+            'is_active' => 1,
+            'is_admin' => 0
+        ]);
     }
 }

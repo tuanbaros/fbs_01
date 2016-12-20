@@ -154,3 +154,11 @@ ol, ul {
     background-color: #a52323;
     color: white;
 }
+
+.colum {
+    text-align: center;
+}
+
+.edit-collection {
+    margin: 20px 30px;
+}

@@ -48,6 +48,7 @@
                     <ul class="nav nav-tabs border-shadow-bottom block-title-tab">
                         <li class="active"><a href="#shop">@lang('shop.shop')</a></li>
                         <li><a href="#all-product">@lang('shop.all-product')</a></li>
+
                         @if (count($shop->collections) > 0)
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -64,6 +65,7 @@
                                 </ul>
                             </li>
                         @endif
+
                     </ul>
                     <div class="tab-content border-shadow-bottom block-detail-tab">
                         <div id="shop" class="tab-pane fade in active">
@@ -78,6 +80,9 @@
                                     </h4>
                                     <h5 class="view-all">
                                         <a href="{{ route('shopCollection.show', $collection->id) }}">
+                                    <h4><span class="title-category">{{ $collection->name }}</span></h4>
+                                    <h5 class="view-all">
+                                        <a href="javascript:void(0)">
                                             <span class="padding-right-5">@lang('shop.view-all')</span> 
                                             <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                                         </a>

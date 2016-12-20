@@ -13,4 +13,14 @@ class CollectionRepository extends BaseRepository implements CollectionRepositor
     {
         return Collection::class;
     }
+
+    public function validate($data, $ruleName)
+    {
+        return $this->model->validate($data, $ruleName);
+    }
+
+    public function valid()
+    {
+        return $this->model->valid();
+    }
 }

@@ -12,4 +12,10 @@ return [
     'collection' => 'Bộ sưu tập',
     'not-found-shop' => 'Không tìm thấy shop',
     'category-shop' => 'Danh mục',
+    'title_shop' => 'Chào mừng bạn đến với HOME SHOP - Kênh người bán',
+    'please_choose' => 'Mời bạn chọn danh mục',
+    'collection' => 'Danh mục',
+    'product' => 'Sản phẩm',
+    'order' => 'Đơn hàng',
+    'view_shop' => 'Xem cửa hàng',
 ];

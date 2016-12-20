@@ -40,4 +40,11 @@ class ShopController extends Controller
 
         return $this->shopRepository->create($data);
     }
+
+    public function show($id)
+    {
+        $shop = $this->shopRepository->find($id);
+         
+        return view('user.shop.show-shop', compact('shop'));
+    }
 }
