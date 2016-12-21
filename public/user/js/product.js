@@ -1,18 +1,20 @@
 var product = function() {
     this.dataRate = {
-        product_id: null,
-        user_id: null,
+        productId: null,
+        userId: null,
+        shopId: null,
         number: null,
         content: null,
-        user_name: null,
-        url_avatar: null,
+        userName: null,
+        urlAvatar: null,
     }
 
     this.init = function(data) {
-        this.dataRate.product_id = data.idProduct;
-        this.dataRate.user_id = data.idUser;
-        this.dataRate.user_name = data.user_name,
-        this.dataRate.url_avatar = data.url_avatar,
+        this.dataRate.productId = data.idProduct;
+        this.dataRate.userId = data.idUser;
+        this.dataRate.userName = data.userName;
+        this.dataRate.urlAvatar = data.urlAvatar;
+        this.dataRate.shopId = data.idShop;
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -33,16 +35,19 @@ var product = function() {
                 $(this).css('z-index', 0);
             }
         );
+        if ($('#btn-follow').data('follow') > 0) {
+            $('#btn-follow').css({'border-color': 'red', 'color': 'red'});
+        }
         $('#input-rate').on('rating.change', function(event, value) {
             current.dataRate.number = value;
-            console.log(current.dataRate.number);
         });
         $('.button.btn-rate').on('click', function(event) {
             current.dataRate.content = $('#content-comment').val();
             $('#rate-comment .rating span.filled-stars').css('width', '0');
             $('#content-comment').val('');
-            if (!current.dataRate.user_id) {
+            if (!current.dataRate.userId) {
                 alert(lang['cart']['unauthenticated']);
+
                 return;
             }
             if (current.dataRate.content != '') {
@@ -56,12 +61,22 @@ var product = function() {
             elementsPerPage: 10,
             effect: 'climb'
         });
+        $('#btn-follow').on('click', function(event) {
+            if (!current.dataRate.userId) {
+                alert(lang['cart']['unauthenticated']);
+
+                return;
+            }
+            follow.changeFollow({
+                shopId: current.dataRate.shopId
+            }, current.changeSinceFollow, current.error);
+        });
     }
 
     this.rate = function(data) {
         var current = this;
         $.ajax({
-            url: '/products/' + data.product_id + '/rate',
+            url: '/products/' + data.productId + '/rate',
             type: 'POST',
             data: {
                 number: data.number,
@@ -71,10 +86,12 @@ var product = function() {
         .done(function(data) {
             if (data === 'rated') {
                 alert(lang['rate']['rated']);
+
                 return;
             }
             if (data === 'not-product') {
                 alert(lang['rate']['not-found-product']);
+
                 return;
             }
             if (data != null && data != 'error') {
@@ -82,10 +99,10 @@ var product = function() {
                 $('#list-rating').prepend(
                     '<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 block-rate">'
                     + '<div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 avatar">'
-                    + '<img src="' + current.dataRate.url_avatar + '" width="50" height="50"></div>'
+                    + '<img src="' + current.dataRate.urlAvatar + '" width="50" height="50"></div>'
                     + '<div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 row block-content">'
                     + '<a href="javascript:void(0)" class="user-name">'
-                    + '<span>' + current.dataRate.user_name + '</span>'
+                    + '<span>' + current.dataRate.userName + '</span>'
                     + '</a>'
                     + '<div class="number-rate">'
                     + '<div class="rating-container rating-md rating-animate rating-disabled">'
@@ -121,5 +138,23 @@ var product = function() {
                 $('#count-rate').html(parseInt($('#count-rate').html()) + 1);
             }
         });
+    }
+
+    this.changeSinceFollow = function() {
+        if ($('#btn-follow').data('follow') == 0) {
+            $('#btn-follow').data('follow', 1)
+                .html(lang['shop']['follow'])
+                .css({'border-color': 'red', 'color': 'red'});
+            $('#number-follow').html(parseInt($('#number-follow').html()) + 1);
+        } else {
+            $('#btn-follow').data('follow', 0)
+                .html(lang['shop']['not-follow'])
+                .css({'border-color': '#e7e7e7', 'color': '#878787'});
+            $('#number-follow').html(parseInt($('#number-follow').html()) - 1);
+        }
+    }
+
+    this.error = function() {
+        alert(lang['cart']['error']);
     }
 }

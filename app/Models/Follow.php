@@ -9,6 +9,8 @@ use App\Models\BaseModel;
 
 class Follow extends BaseModel
 {
+    protected $fillable = ['user_id', 'shop_id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);

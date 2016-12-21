@@ -21,7 +21,13 @@
                             </div>
                             <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
                                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-                                    <button class="btn-button button4">@lang('shop.follow')</button>
+                                    @if (Auth::user())
+                                        <button id="btn-follow" class="btn-button button4" data-follow={{ $followed }}>
+                                            {{ $followed > 0 ? Lang::get('product.following-full') : Lang::get('product.follow') }}
+                                        </button>
+                                    @else
+                                        <button id="btn-follow" class="btn-button button4">@lang('product.follow')</button>
+                                    @endif
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
                                     <button class="btn-button button4">@lang('shop.like')</button>
@@ -34,7 +40,7 @@
                             <span>@lang('shop.count-product') {{ count($shop->products) }}</span>
                         </div>
                         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 block-info-in-shop">
-                            <span>@lang('shop.follow') {{ count($shop->follows) }}</span>
+                            <span>@lang('shop.follow') <span id="number-follow">{{ count($shop->follows) }}</span></span>
                         </div>
                         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 block-info-in-shop">
                             <span>@lang('shop.like') {{ count($shop->likes) }}</span>
@@ -163,12 +169,15 @@
         </div>
         <script type="text/javascript" src="{{ asset('bower_components/jquery.easyPaginate/lib/jquery.easyPaginate.js') }}"></script>
         <script type="text/javascript" src="{{ asset('bower_components/bootstrap/js/tab.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/follow.js') }}"></script>
         <script type="text/javascript" src="{{ asset('user/js/shop.js') }}"></script>
         <script type="text/javascript">
             var shop = new shop();
             $(function() {
                 shop.init({
-                    avatar: '{{ asset($shop->image) }}'
+                    avatar: '{{ asset($shop->image) }}',
+                    idShop: {{ $shop->id }},
+                    idUser: {{ Auth::user() ? Auth::id() : 'null' }},
                 });
             });
         </script>

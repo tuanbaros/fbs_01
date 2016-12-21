@@ -26,6 +26,9 @@ Route::resource('shop', 'ShopController');
 Route::post('products/{id}/rate', ['as' => 'rate.create',
     'uses' => 'ProductController@addRate']);
 
+Route::post('shops/{id}/follow', ['as' => 'shop.follow',
+    'uses' => 'ShopController@follow']);
+
 Route::get('shopCollection/{id}', [ 'as' => 'shopCollection.show',
     'uses' => 'ShopController@shopCollection']);
 

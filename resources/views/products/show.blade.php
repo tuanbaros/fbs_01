@@ -105,7 +105,13 @@
                                         <a href="{{ route('shop.show', $product->shop->id) }}" class="btn-button button4">@lang('product.view')</a>
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 follow">
-                                        <a href="" class="btn-button button4">@lang('product.follow')</a>
+                                        @if (Auth::user())
+                                            <button id="btn-follow" class="btn-button button4" data-follow={{ $followed }}>
+                                                {{ $followed > 0 ? Lang::get('product.following') : Lang::get('product.follow') }}
+                                            </button>
+                                        @else
+                                            <button id="btn-follow" class="btn-button button4">@lang('product.follow')</button>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -115,7 +121,7 @@
                                     <div class="text-align-center name">@lang('product.product')</div>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 block-info">
-                                    <div class="text-align-center count">{{ count($product->shop->follows) }}</div>
+                                    <div id="number-follow" class="text-align-center count">{{ count($product->shop->follows) }}</div>
                                     <div class="text-align-center name">@lang('product.follow')</div>
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 block-info">
@@ -238,15 +244,17 @@
                     </div>
                     <script type="text/javascript" src="{{ asset('bower_components/bootstrap/js/tab.js') }}"></script>
                     <script type="text/javascript" src="{{ asset('bower_components/jquery.easyPaginate/lib/jquery.easyPaginate.js') }}"></script>
+                    <script type="text/javascript" src="{{ asset('js/follow.js') }}"></script>
                     <script type="text/javascript" src="{{ asset('user/js/product.js') }}"></script>
                     <script type="text/javascript">
                         var product = new product();
                         $(function() {
                             product.init({
                                 idProduct: {{ $product->id }},
+                                idShop: {{ $product->shop->id }},
                                 idUser: {{ Auth::user() ? Auth::id() : 'null' }},
-                                user_name: '{{ Auth::user() ? Auth::user()->name : 'null' }}',
-                                url_avatar: '{{ Auth::user() ? Auth::user()->avatar : 'null' }}',
+                                userName: '{{ Auth::user() ? Auth::user()->name : 'null' }}',
+                                urlAvatar: '{{ Auth::user() ? Auth::user()->avatar : 'null' }}',
                             });
                         });
                     </script>
