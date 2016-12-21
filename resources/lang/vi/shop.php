@@ -14,8 +14,8 @@ return [
     'category-shop' => 'Danh mục',
     'title_shop' => 'Chào mừng bạn đến với HOME SHOP - Kênh người bán',
     'please_choose' => 'Mời bạn chọn danh mục',
-    'collection' => 'Danh mục',
     'product' => 'Sản phẩm',
     'order' => 'Đơn hàng',
     'view_shop' => 'Xem cửa hàng',
+    'list-shop' => 'Danh sách shop',
 ];

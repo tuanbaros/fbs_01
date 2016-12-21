@@ -9,5 +9,5 @@ return [
     'all' => 'All',
     'action' => 'Action',
     'create_shop' => 'Create Shop',
-    'manage_shop' => 'Manage Shop'
+    'manage_shop' => 'Manage Shop',
 ];
