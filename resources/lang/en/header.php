@@ -4,10 +4,10 @@ return [
 
     'home' => 'Home',
     'username' => 'Name',
-    'profile' => 'Profile',
+    'profile' => 'Thông tin tài khoản',
     'logout' => 'Logout',
     'all' => 'All',
     'action' => 'Action',
-    'create_shop' => 'Create Shop',
-    'manage_shop' => 'Manage Shop',
+    'create_shop' => 'Tạo shop mới',
+    'manage_shop' => 'Quản lý shop'
 ];

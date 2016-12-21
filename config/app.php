@@ -236,7 +236,6 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'MyFuncs' => App\Helpers\MyFuncs::class,
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-
     ],
 
 ];

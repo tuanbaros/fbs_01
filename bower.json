@@ -28,6 +28,8 @@
     "bootstrap-star-rating": "^4.0.1",
     "jquery.easyPaginate": "https://github.com/st3ph/jquery.easyPaginate.git",
     "datatables.net": "^1.10.13",
-    "datatables.net-dt": "^1.10.13"
+    "datatables.net-dt": "^1.10.13",
+    "parsleyjs": "^2.6.0",
+    "stripe.js": "https://js.stripe.com/v2/"
   }
 }

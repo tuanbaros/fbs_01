@@ -17,7 +17,11 @@ var cart = function() {
 
         $('#cart').on('click', '.cart_quantity_up',function(event) {
             event.preventDefault();
-            current.upQuantity($(this).data('id'));
+            if (($(this).data('qty') + 1) > $(this).data('quantity')) {
+                alert(lang['cart']['not-enough']);
+            } else {
+                current.upQuantity($(this).data('id'));
+            }
         });
 
         $('#cart').on('click', '.cart_quantity_down',function(event) {
