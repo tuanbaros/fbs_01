@@ -13,6 +13,8 @@ use App\Repositories\Contracts\ProductRepositoryInterface;
 use App\Repositories\Eloquent\ProductRepository;
 use App\Repositories\Contracts\CollectionRepositoryInterface;
 use App\Repositories\Eloquent\CollectionRepository;
+use App\Repositories\Contracts\RateRepositoryInterface;
+use App\Repositories\Eloquent\RateRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ShopRepositoryInterface::class, ShopRepository::class);
         $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
         $this->app->bind(CollectionRepositoryInterface::class, CollectionRepository::class);
+        $this->app->bind(RateRepositoryInterface::class, RateRepository::class);
     }
 }

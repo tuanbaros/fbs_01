@@ -51,24 +51,24 @@
                         <div class="block-info-product col-md-12 col-lg-12 col-sm-12 col-xs-12 border-shadow-bottom">
                             <div class="product-name">{{ $product->name }}</div>
                             <div class="block-price">
-                                <div class="discount-price col-md-5 col-lg-5 col-sm-5 col-xs-5">
-                                    <span>{{ number_format(MyFuncs::getDiscount($product->price, $product->discount), 0) }} @lang('home.currency')</span>
+                                <div class="discount-price col-md-7 col-lg-7 col-sm-7 col-xs-7">
+                                    <span>
+                                        {{ number_format(MyFuncs::getDiscount($product->price, $product->discount), 0) }}
+                                        <span class="currency">@lang('home.currency')</span>
+                                    </span>
+                                    <span class="discount" {{ $product->discount > 0 ? '' : 'hidden' }}>
+                                        (-{{ number_format($product->discount, 0) }}@lang('home.percent'))
+                                    </span>
                                 </div>
-                                <div class="product-price col-md-4 col-lg-4 col-sm-4 col-xs-4">
+                                <div class="product-price col-md-5 col-lg-5 col-sm-5 col-xs-5">
                                     <span {{ $product->discount > 0 ? '' : 'hidden' }}>
                                         @lang('product.root-price')
                                         {{ number_format($product->price, 0) }}
                                         @lang('home.currency')
                                     </span>
                                 </div>
-                                <div class="col-md-3 col-lg-3 col-sm-3 col-xs-3 margin-top-10">
-                                    <span {{ $product->discount > 0 ? '' : 'hidden' }}>
-                                        @lang('product.saving')
-                                        {{ number_format($product->discount, 0) }}@lang('home.percent')
-                                    </span>
-                                </div>
                             </div>
-                            <div class="rate">
+                            <div class="rate" id="rate-product-detail">
                                 <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
                             </div>
                             <div class="info-sell-product">
@@ -134,8 +134,8 @@
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 border-shadow-bottom background-while padding-top-10">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#detail">@lang('product.productDetail')</a></li>
-                                <li><a href="#vote">@lang('product.vote')</a></li>
-                                <li><a href="#comment">@lang('product.comment')</a></li>
+                                <li><a href="#vote">@lang('product.vote') (<span id="count-rate">{{ count($product->rates) }}</span>)</a></li>
+                                <li><a href="#comment">@lang('product.comment') ({{ count($product->comments) }})</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div id="detail" class="tab-pane fade in active">
@@ -150,6 +150,38 @@
                                     <p>{{ $product->description }}</p>
                                 </div>
                                 <div id="vote" class="tab-pane fade">
+                                    @if (Auth::user())
+                                        <h4>@lang('product.my-vote')</h4>
+                                        <div id="rate-comment">
+                                            <input id="input-rate" name="input-rate" class="rating rating-loading" data-min="0" data-max="5" data-step="1">
+                                            <textarea id="content-comment" rows="3"></textarea>
+                                            <button class="button btn-rate">@lang('product.vote')</button>
+                                        </div>
+                                    @else
+                                        <div class="margin-top-20"><h4>@lang('product.make-sign-in')</h4></div>
+                                    @endif
+                                    <p class="margin-top-20"><h4>@lang('product.list-vote')</h4></p>
+                                    <div id="list-rating" class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                                        @foreach ($product->rates as $key => $rate)
+                                            <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 block-rate"> 
+                                                <div class="col-md-1 col-lg-1 col-sm-1 col-xs-1 avatar">
+                                                    <img src="{{ asset($rate->user->avatar) }}" width="50" height="50">
+                                                </div>
+                                                <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4 row block-content">
+                                                    <a href="javascript:void(0)" class="user-name">
+                                                        <span>{{ $rate->user->name }}</span>
+                                                    </a>
+                                                    <div class="number-rate">
+                                                        <input id="input-1" name="input-1" class="rating rating-loading" value="{{ $rate->number }}" readonly="true">
+                                                    </div>
+                                                    <div class="content-rate">{{ $rate->content }}</div>
+                                                    <div class="date-rate">
+                                                        <span>{{ $rate->created_at }}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                                 <div id="comment" class="tab-pane fade">
                                 </div>
@@ -190,7 +222,7 @@
                                     </div>
                                     <div class="discount-price">
                                         <span class="price">
-                                            {{ number_format(MyFuncs::getDiscount($value->price, $product->discount), 0) }}
+                                            {{ number_format(MyFuncs::getDiscount($value->price, $value->discount), 0) }}
                                             @lang('home.currency')
                                         </span>
                                     </div>
@@ -205,7 +237,19 @@
                         </div>
                     </div>
                     <script type="text/javascript" src="{{ asset('bower_components/bootstrap/js/tab.js') }}"></script>
+                    <script type="text/javascript" src="{{ asset('bower_components/jquery.easyPaginate/lib/jquery.easyPaginate.js') }}"></script>
                     <script type="text/javascript" src="{{ asset('user/js/product.js') }}"></script>
+                    <script type="text/javascript">
+                        var product = new product();
+                        $(function() {
+                            product.init({
+                                idProduct: {{ $product->id }},
+                                idUser: {{ Auth::user() ? Auth::id() : 'null' }},
+                                user_name: '{{ Auth::user() ? Auth::user()->name : 'null' }}',
+                                url_avatar: '{{ Auth::user() ? Auth::user()->avatar : 'null' }}',
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         </div>
