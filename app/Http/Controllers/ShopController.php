@@ -19,6 +19,13 @@ class ShopController extends Controller
         $this->collectionRepository =$collectionInterface;
     }
 
+    public function index()
+    {
+        $data['shops'] = $this->shopRepository->paginate(config('view.number-shop'));
+
+        return view('shops.index', $data);
+    }
+
     public function show($id)
     {
         $data['shop'] = $this->shopRepository->find($id);

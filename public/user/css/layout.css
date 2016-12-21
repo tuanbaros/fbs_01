@@ -245,6 +245,10 @@ div.cate:hover div.submenu {
     background: #b33b3b;
 }
 
+.navbar.navbar-inverse.navbar-fixed-top .navbar-header a.navbar-brand:hover {
+    background: #822d2d;
+}
+
 .section {
     clear: both;
     padding: 0;
@@ -347,6 +351,12 @@ div.cate:hover div.submenu {
 .view-product {
     background: rgb(245, 245, 245);
     padding-bottom: 20px;
+}
+
+.view-top-shop .view-all-shop {
+    position: absolute;
+    right: 0;
+    top: 10px;
 }
 
 /*discount*/
