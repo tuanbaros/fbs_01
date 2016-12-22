@@ -10,5 +10,10 @@ var lang = {
         'not-fill' : 'Chưa điền đầy đủ',
         'rated' : 'Bạn đã đánh giá rồi!',
         'not-found-product' : 'Không tìm thấy sản phẩm',
+    },
+    'shop' : {
+        'follow' : 'Đang theo',
+        'not-follow' : 'Theo dõi',
+        'follow-full' : 'Đang theo dõi',
     }
 }
