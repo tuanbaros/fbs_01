@@ -11,6 +11,10 @@ use App\Models\BaseModel;
 
 class Order extends BaseModel
 {
+    protected $table = 'orders';
+
+    protected $fillable = ['quantity_item', 'total_discount', 'total_price', 'status', 'user_id', 'receiver_id'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -21,9 +25,9 @@ class Order extends BaseModel
         return $this->hasMany(OrderDetail::class);
     }
 
-    public function receivers()
+    public function receiver()
     {
-        return $this->hasMany(Receiver::class);
+        return $this->hasOne(Receiver::class);
     }
 
     public function payment()

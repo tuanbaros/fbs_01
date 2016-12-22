@@ -10,21 +10,20 @@ class Receiver extends BaseModel
 {
     protected $table = 'receivers';
 
+    protected $fillable = ['name', 'address', 'phone', 'email', 'stripe_customer_id'];
+
     public function rules($ruleName)
     {
-        if ($ruleName == 'create') {
-            return [
-                'name' => 'required|max:50|unique:collections,name'
-            ];
-        }
-
         return [
-            'name' => 'required|max:50|unique:collections,name,' . $this->id
+            'name' => 'required|string|min:2|max:32',
+            'address' => 'required|string|min:2|max:32',
+            'phone' => 'required|min:2|max:12',
+            'email' => 'required|email'
         ];
     }
 
     public function order()
     {
-        return $this->belongsTo(Order::class);
+        return $this->hasOne(Order::class);
     }
 }

@@ -9,6 +9,10 @@ use App\Models\BaseModel;
 
 class OrderDetail extends BaseModel
 {
+    protected $table = 'order_details';
+
+    protected $fillable = ['product_id', 'quantity_item', 'order_id', 'price'];
+
     public function order()
     {
         return $this->belongsTo(Order::class);

@@ -70,12 +70,11 @@
                     ]) !!}
                 </div>
 
-                <div class="form-group" id="product-group">
-                    {!! Form::label('product', Lang::get('user.order.product')) !!}
+                <div class="form-group">
                     <table class="table table-condensed">
                         <thead>
                             <tr class="cart_menu">
-                                <td class="description">@lang('user.cart.item')</td>
+                                <td class="description"><b>@lang('user.cart.item')</b></td>
                                 <td class="price">@lang('user.cart.price')</td>
                                 <td class="quantity">@lang('user.cart.quantity')</td>
                                 <td class="total">@lang('user.cart.sum')</td>
@@ -158,7 +157,7 @@
                 </div>
 
                 <div class="form-group">
-                    <h3>@lang('user.order.total') {{ Cart::subtotal() }} 
+                    <h3>@lang('user.order.total') {{ Cart::instance(Auth::user()->id)->subtotal(0) }} 
                         <span>
                             {!! Form::submit(Lang::get('user.order.title'), ['class' => 'btn btn-primary btn-order', 'id' => 'submitBtn', 'style' => 'margin-bottom: 10px;']) !!}
                         </span>

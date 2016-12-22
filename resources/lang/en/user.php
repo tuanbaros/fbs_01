@@ -60,6 +60,10 @@ return [
         'error' => 'Đã xảy ra lỗi',
         'product' => 'Sản phẩm',
         'total' => 'Tổng thanh toán:',
-        'required' => ':name is required'
+        'required' => ':name is required',
+        'progress' => 'Đang xử lý',
+        'ship' => 'Đang vận chuyển',
+        'complete' => 'Đã hoàn thành',
+        'destroy' => 'Đã hủy'
     ],
 ];

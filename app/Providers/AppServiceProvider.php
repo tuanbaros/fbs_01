@@ -17,6 +17,12 @@ use App\Repositories\Contracts\RateRepositoryInterface;
 use App\Repositories\Eloquent\RateRepository;
 use App\Repositories\Contracts\FollowRepositoryInterface;
 use App\Repositories\Eloquent\FollowRepository;
+use App\Repositories\Contracts\ReceiverRepositoryInterface;
+use App\Repositories\Eloquent\ReceiverRepository;
+use App\Repositories\Contracts\OrderRepositoryInterface;
+use App\Repositories\Eloquent\OrderRepository;
+use App\Repositories\Contracts\OrderDetailRepositoryInterface;
+use App\Repositories\Eloquent\OrderDetailRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -44,5 +50,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CollectionRepositoryInterface::class, CollectionRepository::class);
         $this->app->bind(RateRepositoryInterface::class, RateRepository::class);
         $this->app->bind(FollowRepositoryInterface::class, FollowRepository::class);
+        $this->app->bind(ReceiverRepositoryInterface::class, ReceiverRepository::class);
+        $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
+        $this->app->bind(OrderDetailRepositoryInterface::class, OrderDetailRepository::class);
     }
 }
