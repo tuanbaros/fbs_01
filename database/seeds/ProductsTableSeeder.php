@@ -25,7 +25,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => $faker->text(200),
                 'status' => 1,
                 'category_id' => $faker->numberBetween(1, 90),
-                'shop_id' => 1,
+                'shop_id' => $faker->numberBetween(1, 12),
             ]);
         }
 

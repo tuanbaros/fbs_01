@@ -20,7 +20,7 @@
 
                 <div class="form-group" id="name-group">
                     {!! Form::label('name', Lang::get('user.order.name')) !!}
-                    {!! Form::text('name', null, [
+                    {!! Form::text('name', Auth::user()->name, [
                         'class' => 'form-control',
                         'required' => 'required',
                         'data-parsley-required-message' => Lang::get('user.order.required', ['name' => 'Name']),
@@ -46,7 +46,7 @@
 
                 <div class="form-group" id="phone-group">
                     {!! Form::label('phone', Lang::get('user.order.phone')) !!}
-                    {!! Form::text('phone', null, [
+                    {!! Form::text('phone', Auth::user()->phone, [
                         'class' => 'form-control',
                         'required' => 'required',
                         'data-parsley-required-message' => Lang::get('user.order.required', ['name' => 'Phone']),
@@ -60,7 +60,7 @@
 
                 <div class="form-group" id="email-group">
                     {!! Form::label('email', Lang::get('user.order.email')) !!}
-                    {!! Form::email('email', null, [
+                    {!! Form::email('email', Auth::user()->email, [
                         'class' => 'form-control',
                         'placeholder' => 'email@example.com',
                         'required' => 'required',

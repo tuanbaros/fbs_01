@@ -66,4 +66,34 @@ return [
         'complete' => 'Đã hoàn thành',
         'destroy' => 'Đã hủy'
     ],
+
+    'bill' => [
+        'title' => 'Đơn hàng',
+        'product' => 'Sản phẩm',
+        'date' => 'Ngày',
+        'status' => 'Trạng thái',
+        'total' => 'Tổng cộng',
+        'id' => 'ID',
+        'prefix' => '#',
+        'detail' => 'Thông tin chi tiết đơn hàng',
+        'payment' => 'Hình thức thang toán',
+        'ship' => 'Hình thức giao hàng',
+        'payment-value' => 'Thanh toán bằng thẻ ngân hàng',
+        'ship-value' => 'Giao hàng tận nơi',
+        'summary' => 'Tóm tắt',
+        'amount' => 'Thành tiền',
+        'discount' => 'Giảm giá',
+        'ship-fee' => 'Phí vận chuyển',
+        'zero' => '0',
+        'order-people' => 'Người đặt',
+        'receiver-people' => 'Người nhận',
+        'customer-info' => 'Thông tin khách hàng',
+        'product-info' => 'Thông tin sản phẩm',
+        'state' => [
+            0 => 'Đang xử lý',
+            1 => 'Đang vận chuyển',
+            2 => 'Đã hoàn thành',
+            3 => 'Đã hủy'
+        ]
+    ],
 ];

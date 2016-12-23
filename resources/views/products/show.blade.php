@@ -205,7 +205,7 @@
                                 </a>
                             </h5>
                         </div>
-                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 padding-zero margin-top-10">
+                        <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 padding-zero margin-top-10 cart">
                             @foreach ($similarProducts as $key => $value)
                                 <div class="col-md-2 padding-zero block-product-category block-product-similar">
                                     <div class="height-140p">
@@ -232,7 +232,7 @@
                                             @lang('home.currency')
                                         </span>
                                     </div>
-                                    <div class="cart">
+                                    <div>
                                         <input name="input-start" value="{{ $value->point_rate }}" class="rating input-start" readonly="true">
                                         <input type="button" class="button btn-add-cart" product-id="{{ $value->id }}" value="@lang('categories.addCart')">
                                     </div>
@@ -269,7 +269,6 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/lang.js') }}"></script>
     <script src="{{ asset('js/addcart.js') }}"></script>
     <script>
         var addCart = new addcart();

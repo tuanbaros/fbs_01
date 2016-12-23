@@ -79,6 +79,6 @@ class OrderController extends Controller
             return redirect()->route('user.order.index')->withErrors($e->getMessage())->withInput();
         }
         
-        return 'success';
+        return redirect()->route('user.bill.index');
     }
 }
