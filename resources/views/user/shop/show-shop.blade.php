@@ -1,4 +1,4 @@
-@extends('layouts.user.app')
+@extends('layouts.seller.app')
 
 @section('content')
     <div class="container">
@@ -16,10 +16,10 @@
                 </a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-ls-3">
-                <a href="">
+                <a href="{{ route('user.user.myProducts') }}">
                     <div class="block-categoty-shop two"></div>
                 </a>
-                <a href="">
+                <a href="{{ route('user.user.myProducts') }}">
                     <div class="name-category-shop"><h4>@lang('shop.product')</h4></div>
                 </a>
             </div>

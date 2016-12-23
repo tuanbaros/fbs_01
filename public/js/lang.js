@@ -20,5 +20,9 @@ var lang = {
         'follow-full' : 'Đang theo dõi',
         'like' : 'Thích',
         'liked' : 'Đã thích',
+        'not-exits' : 'Không tồn tại',
+        'not-image' : 'Không phải ảnh',
+        'not-chosen-category' : 'Chưa chọn danh mục',
+        'not-chosen-collection' : 'Chưa chọn bộ sưu tập',
     }
 }

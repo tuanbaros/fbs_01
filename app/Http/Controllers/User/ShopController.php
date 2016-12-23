@@ -44,7 +44,18 @@ class ShopController extends Controller
     public function show($id)
     {
         $shop = $this->shopRepository->find($id);
-         
+
         return view('user.shop.show-shop', compact('shop'));
+    }
+
+    public function showShopOfUser()
+    {
+        if (Auth::user()) {
+            $data['shop'] = $this->shopRepository->findByField('user_id', Auth::id())->first();
+
+            return view('seller-chanel.listProducts', $data);
+        }
+
+        return redirect()->route('/');
     }
 }

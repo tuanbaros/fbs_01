@@ -25,6 +25,8 @@ use App\Repositories\Contracts\OrderDetailRepositoryInterface;
 use App\Repositories\Eloquent\OrderDetailRepository;
 use App\Repositories\Contracts\LikeRepositoryInterface;
 use App\Repositories\Eloquent\LikeRepository;
+use App\Repositories\Contracts\ProductCollectionRepositoryInterface;
+use App\Repositories\Eloquent\ProductCollectionRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -56,5 +58,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(OrderDetailRepositoryInterface::class, OrderDetailRepository::class);
         $this->app->bind(LikeRepositoryInterface::class, LikeRepository::class);
+        $this->app->bind(ProductCollectionRepositoryInterface::class, ProductCollectionRepository::class);
     }
 }

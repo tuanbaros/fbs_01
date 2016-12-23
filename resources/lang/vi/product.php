@@ -33,5 +33,9 @@ return [
     'saving' => 'Tiết kiệm',
     'my-vote' => 'Đánh giá của bạn',
     'list-vote' => 'Danh sách đánh giá',
-    'make-sign-in' => 'Cần đăng nhập để đánh giá sản phẩm'
+    'make-sign-in' => 'Cần đăng nhập để đánh giá sản phẩm',
+    'category' => 'Danh  mục sản phẩm',
+    'quantity' => 'Số lượng',
+    'discount' => 'Chiết khấu',
+    'persent' => '%',
 ];

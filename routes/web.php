@@ -65,6 +65,9 @@ Route::group(['middleware' => 'auth'], function() {
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth', 'as' => 'user.'], function() {
     Route::resource('shop', 'ShopController');
 
+    Route::get('/myProducts', ['as' => 'user.myProducts', 
+        'uses' => 'ShopController@showShopOfUser']);
+
     Route::resource('cart', 'CartController', [ 'only' => [
         'index', 'store'
     ]]);

@@ -25,6 +25,7 @@
     </head>
     <body>
         @include('layouts.header')
+        @include('layouts.search')
         @yield('content')
         @include('layouts.footer')
     </body>
