@@ -12,4 +12,6 @@ interface CategoryRepositoryInterface extends RepositoryInterface
 
     //get list category view in home menu
     public function getCategory($take);
+
+    public function getProducts($category, $from, $to);
 }

@@ -30,7 +30,13 @@
                                     @endif
                                 </div>
                                 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6">
-                                    <button class="btn-button button4">@lang('shop.like')</button>
+                                    @if (Auth::user())
+                                        <button id="btn-like" class="btn-button button4" data-like={{ $liked }}>
+                                            {{ $liked > 0 ? Lang::get('shop.liked') : Lang::get('shop.like') }}
+                                        </button>
+                                    @else
+                                        <button id="btn-like" class="btn-button button4">@lang('shop.like')</button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -43,7 +49,7 @@
                             <span>@lang('shop.follow') <span id="number-follow">{{ count($shop->follows) }}</span></span>
                         </div>
                         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 block-info-in-shop">
-                            <span>@lang('shop.like') {{ count($shop->likes) }}</span>
+                            <span>@lang('shop.like') <span id="number-like">{{ count($shop->likes) }}</span></span>
                         </div>
                         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-6 block-info-in-shop">
                             <span>@lang('shop.collection') {{ count($shop->collections) }}</span>
@@ -117,9 +123,9 @@
                                                     @lang('home.currency')
                                                 </span>
                                             </div>
-                                            <div>
+                                            <div class="cart">
                                                 <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
-                                                <input type="button" class="button btn-add-cart" value="@lang('categories.addCart')">
+                                                <input type="button" class="button btn-add-cart" product-id="{{ $product->id }}" value="@lang('categories.addCart')">
                                             </div>
                                         </div>
                                     @endforeach
@@ -155,9 +161,9 @@
                                                 @lang('home.currency')
                                             </span>
                                         </div>
-                                        <div>
+                                        <div class="cart">
                                             <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
-                                            <input type="button" class="button btn-add-cart" value="@lang('categories.addCart')">
+                                            <input type="button" class="button btn-add-cart" product-id="{{ $product->id }}" value="@lang('categories.addCart')">
                                         </div>
                                     </div>
                                 @endforeach
@@ -184,4 +190,12 @@
     @else
         @lang('shop.not-found-shop')
     @endif
-@stop
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/addcart.js') }}"></script>
+    <script>
+        var addCart = new addcart();
+        addCart.init('.btn-add-cart');
+    </script>
+@endsection
