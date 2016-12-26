@@ -22,4 +22,15 @@ class CategoriesControllers extends Controller
 
         return view('category', $data);
     }
+
+    public function searchProduct(Request $request, $id)
+    {
+        $data = $request->only('to', 'from');
+        $products = $this->categoryRepository->getProducts($id, $data['from'], $data['to']);
+        if ($products) {
+            return view('products.listProducts')->with('products', $products);
+        }
+
+        return 'not-found-category';
+    }
 }

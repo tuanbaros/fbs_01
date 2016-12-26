@@ -56,4 +56,23 @@ class CategoryRepository extends BaseRepository implements CategoryRepositoryInt
             ->where('parent_id', null)
             ->orderBy('sort', 'asc')->take($take)->get();
     }
+
+    public function getProducts($id, $from, $to)
+    {
+        $category = $this->model->find($id);
+        if (!$category) {
+            return null;
+        }
+        if ($category->parent_id) {
+            $products = $category->products
+                ->where('price', '<=', $to)
+                ->where('price', '>=', $from);  
+        } else {
+            $products = $category->allProductsByCate
+                ->where('price', '<=', $to)
+                ->where('price', '>=', $from);
+        }
+
+        return $products;
+    }
 }

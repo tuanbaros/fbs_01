@@ -1,4 +1,7 @@
 var lang = {
+    'currency' : 'vnđ',
+    'add-cart' : 'Add Cart',
+    'input-false' : 'Nhập sai',
     'cart' : {
         'success' : 'Sản phẩm đã được thêm vào giỏ hàng!',
         'not-found' : 'Sản phẩm hết hàng hoặc không tồn tại',
@@ -15,5 +18,7 @@ var lang = {
         'follow' : 'Đang theo',
         'not-follow' : 'Theo dõi',
         'follow-full' : 'Đang theo dõi',
+        'like' : 'Thích',
+        'liked' : 'Đã thích',
     }
 }

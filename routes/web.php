@@ -29,6 +29,12 @@ Route::post('products/{id}/rate', ['as' => 'rate.create',
 Route::post('shops/{id}/follow', ['as' => 'shop.follow',
     'uses' => 'ShopController@follow']);
 
+Route::post('shops/{id}/like', ['as' => 'shop.like',
+    'uses' => 'ShopController@like']);
+
+Route::post('category/{id}/searchProduct', ['as' => 'category.searchProduct',
+    'uses' => 'CategoriesControllers@searchProduct']);
+
 Route::get('shopCollection/{id}', [ 'as' => 'shopCollection.show',
     'uses' => 'ShopController@shopCollection']);
 

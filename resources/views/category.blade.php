@@ -54,7 +54,15 @@
                             <h3>@lang('categories.filter')</h3>
                         </div>
                         <div class="search">
-                            <input type="button" value="@lang('categories.search')" class="button btn-search-product">
+                            <div class="form-group">
+                                <label for="from">@lang('shopCollection.from')</label>
+                                <input type="number" class="form-control number" id="from" placeholder="@lang('shopCollection.from')">
+                            </div>
+                            <div class="form-group">
+                                <label for="to">@lang('shopCollection.to')</label>
+                                <input type="number" class="form-control number" id="to" placeholder="@lang('shopCollection.to')">
+                            </div>
+                            <button id="search-by-price" type="button" class="button btn-search-product">@lang('categories.search')</button>
                         </div>
                     </div>
                 </div>

@@ -141,7 +141,7 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#detail">@lang('product.productDetail')</a></li>
                                 <li><a href="#vote">@lang('product.vote') (<span id="count-rate">{{ count($product->rates) }}</span>)</a></li>
-                                <li><a href="#comment">@lang('product.comment') ({{ count($product->comments) }})</a></li>
+                                <li><a href="#comment">@lang('product.comment')</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div id="detail" class="tab-pane fade in active">
@@ -190,6 +190,9 @@
                                     </div>
                                 </div>
                                 <div id="comment" class="tab-pane fade">
+                                    <div class="fb-comments" data-href="https://developers.facebook.com/apps/1635621576740376/dashboard/"
+                                        data-width="100%" data-numposts="3" data-colorscheme="light"></div>
+                                    <div id="fb-root"></div>
                                 </div>
                             </div>
                         </div>
@@ -246,8 +249,13 @@
                     <script type="text/javascript" src="{{ asset('bower_components/jquery.easyPaginate/lib/jquery.easyPaginate.js') }}"></script>
                     <script type="text/javascript" src="{{ asset('js/follow.js') }}"></script>
                     <script type="text/javascript" src="{{ asset('user/js/product.js') }}"></script>
+                    <script type="text/javascript" src="{{ asset('user/js/plugin.js') }}"></script>
                     <script type="text/javascript">
                         var product = new product();
+                        var plugin = new plugin();
+                        plugin.init({
+                            facebookId: {{ config('plugin.facebook-id') }}
+                        });
                         $(function() {
                             product.init({
                                 idProduct: {{ $product->id }},
