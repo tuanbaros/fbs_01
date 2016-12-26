@@ -21,7 +21,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('user/css/layout.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('user/css/custom.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('bower_components/bootstrap-star-rating/css/star-rating.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset('user/css/shop.css') }}">    
+        <link rel="stylesheet" type="text/css" href="{{ asset('user/css/shop.css') }}">
+        <link rel="stylesheet" href="{{ asset('/bower_components/datatables.net-dt/css/jquery.dataTables.min.css') }}">
     </head>
     <body>
         @include('layouts.header')

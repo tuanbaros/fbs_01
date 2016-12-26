@@ -97,7 +97,20 @@ return [
             3 => 'Đã hủy'
         ]
     ],
+    
     'filter' => 'Lọc theo giá',
     'view-detail' => 'Xem chi tiết',
     'products-category' => 'DANH MỤC SẢN PHẨM',
+
+    'collection' => [
+        'total-product' => 'Số sản phẩm',
+        'collection-title' => 'Bộ sưu tập:',
+        'product-in' => 'Danh sách sản phẩm trong Bộ sưu tập',
+        'product-out' => 'Danh sách sản phẩm không nằm trong Bộ sưu tập',
+        'add' => 'Thêm',
+        'remove' => 'Xóa',
+        'add-warning' => 'Sản phẩm đã tồn tại trong bộ sưu tập',
+        'add-error' => 'Có lỗi xảy ra vui lòng thử lại sau!',
+        'remove-error' => 'Có lỗi xảy ra vui lòng thử lại sau!'
+    ],
 ];

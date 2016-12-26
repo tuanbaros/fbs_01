@@ -29,5 +29,11 @@ var lang = {
         'not-image' : 'Không phải ảnh',
         'not-chosen-category' : 'Chưa chọn danh mục',
         'not-chosen-collection' : 'Chưa chọn bộ sưu tập',
+    },
+    'collection' : {
+        'add-error' : 'Có lỗi xảy ra vui lòng thử lại sau!',
+        'add-warning' : 'Sản phẩm đã tồn tại trong bộ sưu tập',
+        'remove-error' : 'Có lỗi xảy ra vui lòng thử lại sau!',
+        'remove-success' : 'Xóa sản phẩm khỏi bộ sưu tập thành công!'
     }
 }

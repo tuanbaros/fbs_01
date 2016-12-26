@@ -17,5 +17,10 @@
 <body>
     @include('layouts.header')
     @yield('content')
+    <script src="{{ asset('/js/myapp.js') }}"></script>
+    <script>
+        var myApp = new myApp;
+        myApp.init();
+    </script>
 </body>
 </html>

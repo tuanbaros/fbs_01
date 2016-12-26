@@ -33,7 +33,7 @@
                     @foreach ($shop->products as $key => $product)
                         <div class="col-xs-3 col-sm-3 col-md-3 col-ls-3 block-product">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-ls-12 border-shadow-right-bottom block-product-shop">
-                                <a href="">
+                                <a href="{{ route('product.show', $product) }}">
                                     <div class="image-product">
                                         @if (count($product->images) > 0)
                                             <img src="{{ $product->images[0]->url }}" class="image">
@@ -41,7 +41,7 @@
                                     </div>
                                 </a>
                                 <div class="caption">
-                                    <div class="product-name-shop"><a href=""><h4>{{ $product->name }}</h4></a></div>
+                                    <div class="product-name-shop"><a href="{{ route('product.show', $product) }}"><h4>{{ $product->name }}</h4></a></div>
                                     <div class="price-and-number">
                                         <span>{{ number_format($product->price, 0) }} @lang('home.currency')</span>
                                         <span class="product-in-stock">@lang('shop.stock-remain') {{ $product->quantity }}</span>

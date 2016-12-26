@@ -92,6 +92,7 @@ class OrderController extends Controller
         $data = $request->only('to', 'from');
         $result['orderedProducts'] = $this->shopRepository
             ->getListOrderedProducts(Auth::user()->shop->id, $data['from'], $data['to']);
+            //dd(Auth::user()->shop->id);
         if ($data['from'] && $data['to']) {
             return view('seller.item-ordered-product', $result);
         }

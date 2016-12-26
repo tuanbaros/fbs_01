@@ -1,20 +1,25 @@
 var collection = function() {
 
-    this.init = function() {
+    this.table = null;
+
+    this.init = function(table) {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
+
+        this.table = table;
         this.update();
         this.remove();
     }
 
     this.update = function() {
         var dataId;
+        var current = this;
         $('.update').on('click', function() {
             dataId = $(this).data('id');
-            $('#nameCollection').val($(this).parent().prev().html());
+            $('#nameCollection').val($('#collection-' + dataId).html());
         });
 
         $('.edit-collection').on('click', '.btn-primary', function() {
@@ -30,6 +35,8 @@ var collection = function() {
                 success: function (data) {
                     $('#collection-' + dataId).html($('#nameCollection').val());
                     $('.modal').modal('hide');
+                    current.table.clear();
+                    current.table.fnDraw();
                 }
             });
         });
@@ -37,6 +44,7 @@ var collection = function() {
 
     this.remove = function() {
         var dataId;
+        var current = this;
         $('.delete').on('click', function () {
             dataId = $(this).data('id');
             $.ajax({
@@ -52,6 +60,8 @@ var collection = function() {
                 }
             });
             $(this).parent().parent().remove();
+            current.table.clear();
+            current.table.fnDraw();
         });
     }
 }

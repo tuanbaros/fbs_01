@@ -120,6 +120,16 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth',
         'uses' => 'CollectionController@postDeleteAjax'
     ]);
 
+    Route::post('/collection/add-product', [
+        'as' => 'collection.add-product', 
+        'uses' => 'CollectionController@addProduct'
+    ]);
+
+    Route::post('/collection/remove-product', [
+        'as' => 'collection.remove-product', 
+        'uses' => 'CollectionController@removeProduct'
+    ]);
+
     Route::resource('order', 'OrderController', [ 'only' => [
         'index', 'store'
     ]]);
