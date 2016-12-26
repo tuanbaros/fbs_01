@@ -67,7 +67,6 @@
 
 @section('script')
     <script src="{{ asset('/js/dttable.js') }}"></script>
-    <script src="{{ asset('/js/category.js') }}"></script>
     <script>
         var dttable = new dttable();
         dttable.init('#dataTables-example');

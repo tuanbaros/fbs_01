@@ -34,7 +34,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-8 cart">
                         @foreach ($category->productsThrough as $key => $product)
                             <div class="col-md-3 padding-zero block-product-home">
                                 <div class="height-120p">
@@ -61,7 +61,7 @@
                                         @lang('home.currency')
                                     </span>
                                 </div>
-                                <div class="cart">
+                                <div>
                                     <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
                                     <input type="button" product-id="{{ $product->id }}" class="button btn-add-cart" value="@lang('categories.addCart')">
                                 </div>

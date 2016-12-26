@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
                     <div class="shop-sort-by-options col-md-12 col-lg-12 col-sm-12 col-xs-12 border-shadow-bottom"></div>
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 padding-zero margin-top-20" id="list-product">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 padding-zero margin-top-20 cart">
                         @foreach (MyFuncs::getListProduct($categoryShow) as $key => $product)
                             <div class="col-md-3 padding-zero block-product-category">
                                 <div class="height-140p">
@@ -87,7 +87,7 @@
                                         @lang('home.currency')
                                     </span>
                                 </div>
-                                <div class="cart">
+                                <div>
                                     <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
                                     <input type="button" class="button btn-add-cart" product-id="{{ $product->id }}" value="@lang('categories.addCart')">
                                 </div>

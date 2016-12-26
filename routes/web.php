@@ -97,6 +97,10 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth',
 
     Route::resource('order', 'OrderController', [ 'only' => [
         'index', 'store'
+    ]]);
+
+    Route::resource('bill', 'BillController', [ 'only' => [
+        'index', 'show'
     ]]); 
 });
 

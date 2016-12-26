@@ -9,5 +9,6 @@ return [
     'all' => 'All',
     'action' => 'Action',
     'create_shop' => 'Tạo shop mới',
-    'manage_shop' => 'Quản lý shop'
+    'manage_shop' => 'Quản lý shop',
+    'bill' => 'Thông tin đơn hàng'
 ];

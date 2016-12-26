@@ -25,14 +25,16 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ route('users.edit', Auth::user()) }}"><i class="fa fa-btn fa-edit">
                             @lang('header.profile')</i></a></li>
+                            <li><a href="{{ route('user.bill.index')}}"><i class="fa fa-btn fa-info-circle">
+                            @lang('header.bill')</i></a></li>
                             @if (Auth::user()->shop)
                                 <li><a href="{{ route('user.shop.show', Auth::user()->shop->id) }}">
-                                    <i class="fa fa-btn fa-edit">
+                                    <i class="fa fa-btn fa-shopping-bag">
                                     @lang('header.manage_shop')</i></a>
                                 </li>
                             @else
                                 <li><a href="{{ route('user.shop.create') }}">
-                                <i class="fa fa-btn fa-edit">
+                                <i class="fa fa-btn fa-shopping-bag">
                                     @lang('header.create_shop')</i></a>
                                 </li>
                             @endif

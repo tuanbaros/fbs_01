@@ -27,7 +27,7 @@ class Order extends BaseModel
 
     public function receiver()
     {
-        return $this->hasOne(Receiver::class);
+        return $this->hasOne(Receiver::class, 'id', 'receiver_id');
     }
 
     public function payment()

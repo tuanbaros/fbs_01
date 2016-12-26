@@ -50,7 +50,7 @@
                 </div>
                 <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
                     <div class="shop-sort-by-options col-md-12 col-lg-12 col-sm-12 col-xs-12 border-shadow-bottom"></div>
-                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 padding-zero margin-top-20" id="list-product">
+                    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 padding-zero margin-top-20 cart">
                         @foreach ($products as $key => $product)
                             <div class="col-md-3 padding-zero block-product-category">
                                 <div class="height-140p">
@@ -77,7 +77,7 @@
                                         @lang('home.currency')
                                     </span>
                                 </div>
-                                <div class="cart">
+                                <div>
                                     <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
                                     <input type="button" class="button btn-add-cart" product-id="{{ $product->id }}" value="@lang('categories.addCart')">
                                 </div>
@@ -90,12 +90,12 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="{{ asset('bower_components/jquery.easyPaginate/lib/jquery.easyPaginate.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('user/js/search.js') }}"></script>
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/addcart.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bower_components/jquery.easyPaginate/lib/jquery.easyPaginate.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('user/js/search.js') }}"></script>
+    <script src="{{ asset('/js/addcart.js') }}"></script>
     <script>
         var addCart = new addcart();
         addCart.init('.btn-add-cart');

@@ -11,43 +11,33 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker\Factory::create();
+
         $category = [
-            'Suc khoe & sac dep',
-            'Thoi trang',
-            'Dien thoai & phu kien',
-            'Thiet bi dien tu',
-            'Me & be',
-            'Thiet bi dien gia dung',
-            'Nha cua & Doi song',
-            'Giay dep',
-            'Tui vi',
+            'Sức khỏe & Sắc đẹp',
+            'Thời trang',
+            'Điện thoại & Phụ kiện',
+            'Thiết bị điện tử',
+            'Mẹ & Bé',
+            'Thiết bị điện gia dụng',
+            'Nhà cửa & Đời sống',
+            'Giầy dép',
+            'Túi ví',
         ];
 
         for ($i = 0; $i < count($category); $i++) { 
             DB::table('categories')->insert([
                 'name' => $category[$i],
-                'image' => 'images/cate1.1.png',
+                'image' => $faker->imageUrl(500, 500),
                 'sort' => 1,
             ]);
         }
 
-        $subCategory = [
-            'Cham soc da',
-            'Son & Cham soc moi',
-            'Tran diem da',
-            'Nuoc hoa',
-            'Tam & cham soc co the',
-            'Cham soc toc',
-            'Trang diem mat',
-            'Dung cu lam dep',
-            'Vitamin & thuc pham chuc nang',
-        ];
-
         for ($i = 0; $i < count($category); $i++) {
-            for ($j = 0; $j < count($subCategory); $j++) {
+            for ($j = 0; $j < 9; $j++) {
                 DB::table('categories')->insert([
-                    'name' => $subCategory[$j],
-                    'image' => 'images/cate1.1.png',
+                    'name' => rtrim($faker->text(30), '.'),
+                    'image' => $faker->imageUrl(500, 500),
                     'sort' => 1,
                     'parent_id' => $i + 1,
                 ]);
