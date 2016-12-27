@@ -24,10 +24,10 @@
                 </a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3 col-ls-3">
-                <a href="">
+                <a href="{{ route('user.user.orderedProduct') }}">
                     <div class="block-categoty-shop three"></div>
                 </a>
-                <a href="">
+                <a href="{{ route('user.user.orderedProduct') }}">
                     <div class="name-category-shop"><h4>@lang('shop.order')</h4></div>
                 </a>
             </div>

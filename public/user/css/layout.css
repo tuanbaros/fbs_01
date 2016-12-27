@@ -52,7 +52,7 @@
 
 .button.btn-add-cart:hover, .button.btn-search-product:hover,
 .block-info-product .btn-add-cart-product-detail:hover,
-.btn-add-product:hover {
+.btn-add-product:hover, .button.btn-search-order:hover {
     -webkit-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.5);
     -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.5);
     box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.5);
@@ -178,6 +178,11 @@
     font-size: 20px;
 }
 
+.date-to, .date-from {
+    font-size: 25px;
+    padding: 3px 0;
+}
+
 .footer {
     position: relative;
     background: #FCFCFC;
@@ -189,6 +194,7 @@
     left: -3px;
     top: 0;
     font-size: 10px;
+    cursor: pointer;
 }
 
 .group {
