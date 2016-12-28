@@ -21,13 +21,7 @@ var category = function() {
         });
         $('.metismenu').metisMenu();
         current.paginate();
-        $('.block-product-category').hover(
-            function() {
-                $(this).css('z-index', 1);
-            }, function() {
-                $(this).css('z-index', 0);
-            }
-        );
+        current.hoverBlockProduct();
         if (current.data.parent_id == null) {
             var category_current = "#category_" + current.data.category_id;
             $(category_current).css('color', 'red');
@@ -62,16 +56,8 @@ var category = function() {
             current.searchProduct(current.data.category_id, current.dataSearch,
                 current.loadProduct, current);
         });
-        current.hoverBlockProduct();
         $('div.easyPaginateNav a').on('click', function() {
-            addCart.init('.btn-add-cart');
-            $('.block-product-category').hover(
-                function() {
-                    $(this).css('z-index', 1);
-                }, function() {
-                    $(this).css('z-index', 0);
-                }
-            );
+            current.hoverBlockProduct();
         });
     }
 
@@ -84,7 +70,6 @@ var category = function() {
         .done(function(data) {
             callback(data, current);
             current.hoverBlockProduct();
-            addCart.init('.btn-add-cart');
         });
     }          
 

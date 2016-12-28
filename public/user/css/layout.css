@@ -51,7 +51,8 @@
 }
 
 .button.btn-add-cart:hover, .button.btn-search-product:hover,
-.block-info-product .btn-add-cart-product-detail:hover {
+.block-info-product .btn-add-cart-product-detail:hover,
+.btn-add-product:hover {
     -webkit-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.5);
     -moz-box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.5);
     box-shadow: 2px 2px 5px 0 rgba(0,0,0,0.5);
@@ -67,6 +68,17 @@
     position: absolute;
     bottom: 5px;
     right: 8px;
+}
+
+.button.btn-add-product{
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.block-product {
+    min-width: 0 !important;
 }
 
 .badge {
@@ -161,6 +173,11 @@
     color: #747474;
 }
 
+.easyPaginateNav a {
+    padding: 5px;
+    font-size: 20px;
+}
+
 .footer {
     position: relative;
     background: #FCFCFC;
@@ -211,6 +228,16 @@ img.img-title {
     border-radius: 0 !important;
 }
 
+.label.label-success.title-image {
+    font-size: 100%;
+    margin: 0 3px;
+}
+
+.label.label-success.title-image .glyphicon.glyphicon-remove {
+    cursor: pointer;
+    padding-left: 15px;
+}
+
 div.cate div.submenu {
     position: absolute;
     top: 40px;
@@ -232,6 +259,10 @@ div.cate:hover div.submenu {
     background: #B81D22;
     border-color: #B81D22;
     padding: 0 0 0 10px;
+}
+
+.modal-content {
+    border-radius: 0; 
 }
 
 .navbar.navbar-inverse.navbar-fixed-top {

@@ -6,24 +6,39 @@ use Illuminate\Http\Request;
 use App\Repositories\Contracts\ProductRepositoryInterface as ProductInterface;
 use App\Repositories\Contracts\RateRepositoryInterface as RateInterface;
 use App\Repositories\Contracts\FollowRepositoryInterface as FollowInterface;
+use App\Repositories\Contracts\ProductCollectionRepositoryInterface as ProductCollectionInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Exception;
+use App\ProductCollectionValidator;
+use App\ProductValidator;
+use Prettus\Validator\Exceptions\ValidatorException;
+use Prettus\Validator\Contracts\ValidatorInterface;
 use Auth;
 
 class ProductController extends Controller
 {
     private $productRepository;
     private $rateRepository;
+    private $productCollectionRepository;
     private $followRepository;
+
+    protected $productCollectionValidator;
+    protected $productValidator;
 
     public function __construct(
         ProductInterface $productInterface,
         RateInterface $rateInterface,
-        FollowInterface $followInterface)
+        FollowInterface $followInterface,
+        ProductCollectionInterface $productCollectionInterface,
+        ProductCollectionValidator $productCollectionValidator,
+        ProductValidator $productValidator)
     {
         $this->productRepository = $productInterface;
         $this->rateRepository = $rateInterface;
         $this->followRepository = $followInterface;
+        $this->productCollectionRepository = $productCollectionInterface;
+        $this->productCollectionValidator = $productCollectionValidator;
+        $this->productValidator = $productValidator;
     }
 
     public function show($id)
@@ -41,6 +56,33 @@ class ProductController extends Controller
         }
 
         return view('products.show', $data);
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->only('name', 'category_id', 'price', 'code',
+            'quantity', 'discount', 'description', 'status', 'collection', 'images');
+        $data = array_collapse([$data, ['shop_id' => Auth::user()->shop->id]]);
+        try {
+            if ($this->productValidator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE)) {
+                DB::beginTransaction();
+                $product = $this->productRepository->create($data);
+                $productCollection = ['product_id' => $product->id, 'collection_id' => $data['collection']];
+                if ($this->productCollectionValidator->with($productCollection)->passesOrFail()) {
+                    $this->productCollectionRepository->create($productCollection);
+                    DB::commit();
+
+                    return response()->json(['status' => 'success', 'data' => $product]);
+                }
+                DB::rollback();
+            }
+        } catch (ValidatorException $e) {
+            DB::rollback();
+        } catch (Exception $e) {
+            DB::rollback();
+        }
+
+        return response()->json(['status' => 'error']);
     }
 
     public function addRate(Request $request, $id)

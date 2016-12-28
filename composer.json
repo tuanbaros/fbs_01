@@ -13,7 +13,8 @@
         "prettus/l5-repository": "^2.6",
         "fzaninotto/faker": "^1.6",
         "gloudemans/shoppingcart": "^2.2",
-        "stripe/stripe-php": "4.*"
+        "stripe/stripe-php": "4.*",
+        "prettus/laravel-validation": "1.1.*"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

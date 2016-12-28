@@ -7,5 +7,5 @@ use App\Models\BaseModel;
 
 class ProductCollection extends BaseModel
 {
-    //
+    protected $fillable = ['product_id', 'collection_id'];
 }
