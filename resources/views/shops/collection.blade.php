@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="list-collection">
                                     @foreach ($collection->shop->collections as $key => $value)
-                                        <a href="javascript:void(0)">
+                                        <a href="{{ route('shopCollection.show', $value->id) }}">
                                             <div class="item-collection" id="item-collection-{{ $value->id }}">
                                                 {{ $value->name }}
                                             </div>
@@ -56,17 +56,15 @@
                                     <h4>@lang('shopCollection.price')</h4>
                                 </div>
                                 <div class="search">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="from">@lang('shopCollection.from')</label>
-                                            <input type="number" class="form-control number" id="from" placeholder="@lang('shopCollection.from')">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="to">@lang('shopCollection.to')</label>
-                                            <input type="number" class="form-control number" id="to" placeholder="@lang('shopCollection.to')">
-                                        </div>
-                                        <input type="submit" value="Tim kiem" class="button btn-search-product">
-                                    </form>  
+                                    <div class="form-group">
+                                        <label for="from">@lang('shopCollection.from')</label>
+                                        <input type="number" class="form-control number" id="from" placeholder="@lang('shopCollection.from')">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="to">@lang('shopCollection.to')</label>
+                                        <input type="number" class="form-control number" id="to" placeholder="@lang('shopCollection.to')">
+                                    </div>
+                                    <button id="search-product" class="button btn-search-product">@lang('shopCollection.search')</button>
                                 </div>
                             </div>  
                         </div>
@@ -115,9 +113,9 @@
                                                     @lang('home.currency')
                                                 </span>
                                             </div>
-                                            <div>
+                                            <div class="cart">
                                                 <input name="input-start" value="{{ $product->point_rate }}" class="rating input-start" readonly="true">
-                                                <input type="button" class="button btn-add-cart" value="@lang('categories.addCart')">
+                                                <input type="button" class="button btn-add-cart"  product-id="{{ $product->id }}" value="@lang('categories.addCart')">
                                             </div>
                                         </div>
                                     @endforeach
@@ -132,11 +130,17 @@
         </div>
         <script type="text/javascript" src="{{ asset('bower_components/bootstrap/js/tab.js') }}"></script>
         <script type="text/javascript" src="{{ asset('user/js/shopCollection.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/lang.js') }}"></script>
+        <script src="{{ asset('js/addcart.js') }}"></script>
         <script type="text/javascript">
             var shopCollection = new shopCollection();
-            shopCollection.init({
-                imageUrl: '{{ asset($collection->shop->image) }}',
-                idItemCollection: '{{ $collection->id }}'
+            var addCart = new addcart();
+            $(function() {
+                shopCollection.init({
+                    imageUrl: '{{ asset($collection->shop->image) }}',
+                    idItemCollection: '{{ $collection->id }}'
+                });
+                addCart.init('.btn-add-cart');
             });
         </script>
     @endif

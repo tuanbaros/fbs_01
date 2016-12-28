@@ -38,6 +38,9 @@ Route::post('category/{id}/searchProduct', ['as' => 'category.searchProduct',
 Route::get('shopCollection/{id}', [ 'as' => 'shopCollection.show',
     'uses' => 'ShopController@shopCollection']);
 
+Route::post('collection/{id}/searchProduct', [ 'as' => 'shopCollection.searchProduct',
+    'uses' => 'ShopController@searchProduct']);
+
 Auth::routes();
 
 Route::get('auth/{provider}', [

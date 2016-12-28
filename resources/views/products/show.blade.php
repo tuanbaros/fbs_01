@@ -73,13 +73,13 @@
                             </div>
                             <div class="info-sell-product">
                                 <span>@lang('product.count'): </span>
-                                <span class="operator">-</span>
+                                <span class="operator operator-minus">-</span>
                                 <span class="number">1</span>
-                                <span class="operator">+</span>
-                                <span class="avarible-product">{{ $product->quantity }} @lang('product.availible')</span>
+                                <span class="operator operator-add">+</span>
+                                <span class="avarible-product"><span class="sum">{{ $product->quantity }}</span> @lang('product.availible')</span>
                             </div>
-                            <div class="add-product-in-cart cart">
-                                <input type="button" class="btn-add-cart-product-detail" product-id="{{ $product->id }}" value="@lang('categories.addCart')">
+                            <div class="add-product-in-cart">
+                                <input type="button" class="btn-add-cart-product-detail" data-id="{{ $product->id }}" value="@lang('categories.addCart')">
                             </div>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 border-shadow-bottom security-shop">
@@ -263,6 +263,7 @@
                                 idUser: {{ Auth::user() ? Auth::id() : 'null' }},
                                 userName: '{{ Auth::user() ? Auth::user()->name : 'null' }}',
                                 urlAvatar: '{{ Auth::user() ? Auth::user()->avatar : 'null' }}',
+                                addCart: addCart,
                             });
                         });
                     </script>
@@ -281,7 +282,5 @@
     <script>
         var addCart = new addcart();
         addCart.init('.btn-add-cart');
-        var addCart1 = new addcart();
-        addCart1.init('.btn-add-cart-product-detail');
     </script>
 @endsection

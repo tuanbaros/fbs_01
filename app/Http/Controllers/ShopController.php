@@ -61,6 +61,14 @@ class ShopController extends Controller
         return view('shops.collection', $data);
     }
 
+    public function searchProduct(Request $request, $id)
+    {
+        $data['products'] = $this->collectionRepository
+            ->getProducts($id, $request->from, $request->to);
+
+        return view('shops.item-products', $data);
+    }
+
     public function follow($id)
     {
         $shop = $this->shopRepository->find($id);

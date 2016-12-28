@@ -7,6 +7,7 @@ var product = function() {
         content: null,
         userName: null,
         urlAvatar: null,
+        addCart: null,
     }
 
     this.init = function(data) {
@@ -15,6 +16,7 @@ var product = function() {
         this.dataRate.userName = data.userName;
         this.dataRate.urlAvatar = data.urlAvatar;
         this.dataRate.shopId = data.idShop;
+        this.dataRate.addCart = data.addCart;
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -71,6 +73,36 @@ var product = function() {
                 shopId: current.dataRate.shopId
             }, current.changeSinceFollow, current.error);
         });
+        $('.info-sell-product .operator-minus').on('click', function(event) {
+            current.changeNumber('minus');
+        });
+        $('.info-sell-product .operator-add').on('click', function(event) {
+            current.changeNumber('add');
+        });
+        $('.add-product-in-cart input.btn-add-cart-product-detail').on('click', function(event) {
+            var number = $('.info-sell-product span.number').html();
+            var productId = $(this).data('id');
+            current.dataRate.addCart.addToCartWithNumber(productId, number);
+        });
+    }
+
+    this.changeNumber = function(data) {
+        var number = parseInt($('.info-sell-product .number').html());
+        var sum = parseInt($('.info-sell-product .avarible-product span.sum').html());
+        if (data === 'add') {
+            if (number >= sum) {
+                number = sum;
+            } else {
+                number += 1; 
+            }
+        } else {
+            if (number <= 1) {
+                number = 1;
+            } else {
+                number -= 1;
+            }
+        }
+        $('.info-sell-product .number').html(number);
     }
 
     this.rate = function(data) {

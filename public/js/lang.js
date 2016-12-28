@@ -2,6 +2,7 @@ var lang = {
     'currency' : 'vnđ',
     'add-cart' : 'Add Cart',
     'input-false' : 'Nhập sai',
+    'not-input' : 'Chưa điền đủ thông tin',
     'cart' : {
         'success' : 'Sản phẩm đã được thêm vào giỏ hàng!',
         'not-found' : 'Sản phẩm hết hàng hoặc không tồn tại',

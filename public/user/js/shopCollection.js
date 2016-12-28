@@ -8,6 +8,11 @@ var shopCollection = function() {
     this.init = function(data) {
         this.data.imageUrl = data.imageUrl;
         this.data.idItemCollection = data.idItemCollection;
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
+        });
         this.addEvent();
     }
 
@@ -32,5 +37,32 @@ var shopCollection = function() {
                 $(this).css('background', '#fff');
             }
         );
+        $('.search #search-product').on('click', function(event) {
+            var to = $('#to').val();
+            var from = $('#from').val();
+            if (to != '' && from != '') {
+                current.searchProduct(current.data.idItemCollection, from, to, current);
+            } else {
+                alert(lang['not-input']);
+            }
+        });
+    }
+
+    this.searchProduct = function(collectionId, from, to, current) {
+        $.ajax({
+            url: '/collection/' + collectionId + '/searchProduct',
+            type: 'POST',
+            data: {
+                from: from,
+                to: to
+            },
+        })
+        .done(function(result) {
+            $('#new').html(result);
+            $('.btn-add-cart-search').on('click', function(event) {
+                var addCart = new addcart('.btn-add-cart');
+                addCart.addToCart($(this).attr('product-id'));
+            });
+        });
     }
 }

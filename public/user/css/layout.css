@@ -432,3 +432,7 @@ div.cate:hover div.submenu {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+.rating-container .star {
+    display: table-cell !important;
+}
