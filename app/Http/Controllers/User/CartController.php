@@ -25,12 +25,13 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $product = Product::find($request->id);
+        $number = $request->number ? $request->number : 1;
         if ($product) {
             $price = $product->price * (1 - $product->discount / 100);
             Cart::instance(Auth::user()->id)->add([
                 'id' => $product->id,
                 'name' => $product->name,
-                'qty' => 1,
+                'qty' => $number,
                 'price' => $price,
                 'options' => [
                     'shop_id' => $product->shop_id,

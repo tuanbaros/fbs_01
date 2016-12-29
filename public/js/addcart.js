@@ -35,4 +35,18 @@ var addcart = function() {
             alert(lang['cart']['unauthenticated']);
         });
     }
+
+    this.addToCartWithNumber = function(id, number) {
+        $.ajax({
+            url: '/user/cart',
+            type: 'POST',
+            data: {id: id, number: number},
+        })
+        .done(function(data) {
+            alert(lang['cart'][data]);
+        })
+        .fail(function() {
+            alert(lang['cart']['unauthenticated']);
+        });
+    }
 }

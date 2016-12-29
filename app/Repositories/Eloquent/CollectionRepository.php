@@ -23,4 +23,15 @@ class CollectionRepository extends BaseRepository implements CollectionRepositor
     {
         return $this->model->valid();
     }
+
+    public function getProducts($id, $from, $to)
+    {
+        $collection = $this->model->find($id);
+        if ($collection) {
+            return $collection->products()
+                ->whereBetween('price', [$from, $to])->get();
+        }
+
+        return null;
+    }
 }
