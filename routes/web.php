@@ -72,6 +72,16 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => 'auth',
         'index', 'store'
     ]]);
 
+    Route::get('orderedProduct', [
+        'as' => 'user.orderedProduct',
+        'uses' => 'OrderController@listOrderedProduct'
+    ]);
+
+    Route::post('searchOrder', [
+        'as' => 'user.searchOrder',
+        'uses' => 'OrderController@listOrderedProduct'
+    ]);
+
     Route::get('cart/clear-cart', [
         'as' => 'cart.clear',
         'uses' => 'CartController@clearCart'

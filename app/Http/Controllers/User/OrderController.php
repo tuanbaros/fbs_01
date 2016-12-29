@@ -7,10 +7,12 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\ReceiverRepositoryInterface as ReceiverInterface;
 use App\Repositories\Contracts\OrderRepositoryInterface as OrderInterface;
 use App\Repositories\Contracts\ProductRepositoryInterface as ProductInterface;
+use App\Repositories\Contracts\ShopRepositoryInterface as ShopInterface;
 use Config;
 use Auth;
 use Cart;
 use DB;
+use Carbon\Carbon;
 use App\Models\Product;
 
 class OrderController extends Controller
@@ -18,16 +20,19 @@ class OrderController extends Controller
     private $reveiverRepository;
     private $orderRepository;
     private $productRepository;
+    private $shopRepository;
 
     public function __construct(
         ReceiverInterface $reveiverInterface, 
         OrderInterface $orderInterface, 
-        ProductInterface $productInterface
+        ProductInterface $productInterface,
+        ShopInterface $shopInterface
     )
     {
        $this->reveiverRepository = $reveiverInterface;
        $this->orderRepository = $orderInterface;
        $this->productRepository = $productInterface;
+       $this->shopRepository = $shopInterface;
     }
 
     public function index()
@@ -80,5 +85,17 @@ class OrderController extends Controller
         }
         
         return redirect()->route('user.bill.index');
+    }
+
+    public function listOrderedProduct(Request $request)
+    {
+        $data = $request->only('to', 'from');
+        $result['orderedProducts'] = $this->shopRepository
+            ->getListOrderedProducts(Auth::user()->shop->id, $data['from'], $data['to']);
+        if ($data['from'] && $data['to']) {
+            return view('seller.item-ordered-product', $result);
+        }
+ 
+        return view('seller.manageOrder', $result);
     }
 }

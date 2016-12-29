@@ -9,6 +9,7 @@ use App\Models\Collection;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\BaseModel;
+use App\Models\OrderDetail;
 
 class Shop extends BaseModel
 {
@@ -59,5 +60,11 @@ class Shop extends BaseModel
     public function user()
     {
         return $this->hasOne(User::class);
+    }
+
+    public function orderDetails()
+    {
+        return $result = $this->hasManyThrough(OrderDetail::class, Product::class,
+            'shop_id', 'product_id')->orderBy('created_at', 'desc');
     }
 }
