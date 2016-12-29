@@ -58,4 +58,13 @@ class ShopController extends Controller
 
         return redirect()->route('/');
     }
+
+    public function myShop()
+    {
+        if (Auth::user()) {
+            return view('seller-chanel.myShop');
+        }
+
+        return redirect()->route('/');
+    }
 }

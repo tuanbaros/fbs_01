@@ -1,9 +1,23 @@
 @extends('layouts.seller.app')
 
+@section('title')
+    @lang('seller.product-in-shop')
+@endsection
+
 @section('content')
-    <div class="border-shadow-bottom nav-header margin-top-50">
+    <link rel="stylesheet" href="{{ asset('user/css/listProducts.css') }}">
+    <div class="speace20 margin-top-50"></div>
+    <div class="container">
+        <div class="row">
+            <ol class="breadcrumb border-shadow-bottom">
+                <li>
+                    <a href="{{ route('user.user.myShop') }}">
+                        @lang('seller.my-shop')
+                    </a>
+                </li>
+            </ol>
+        </div>
     </div>
-    <div class="speace20"></div>
     @if ($shop)
         <div class="container">
             <div class="col-xs-12 col-sm-12 col-md-12 col-ls-12 row-item row">
@@ -31,7 +45,13 @@
                     @foreach ($shop->products as $key => $product)
                         <div class="col-xs-3 col-sm-3 col-md-3 col-ls-3 block-product">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-ls-12 border-shadow-right-bottom block-product-shop">
-                                <a href=""><img src="http://www.w3schools.com/bootstrap/cinqueterre.jpg" width="100%" height="200"></a>
+                                <a href="">
+                                    <div class="image-product">
+                                        @if (count($product->images) > 0)
+                                            <img src="{{ $product->images[0]->url }}" class="image">
+                                        @endif
+                                    </div>
+                                </a>
                                 <div class="caption">
                                     <div class="product-name-shop"><a href=""><h4>{{ $product->name }}</h4></a></div>
                                     <div class="price-and-number">
@@ -43,13 +63,16 @@
                                         <span class="comment">@lang('shop.vote') {{ count($product->rates) }}</span>
                                     </div>
                                 </div>
+                                <div class="option">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
         </div>
-
         <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

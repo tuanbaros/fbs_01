@@ -8,6 +8,8 @@ use App\Models\BaseModel;
 
 class Image extends BaseModel
 {
+    protected $fillable = ['product_id', 'url'];
+
     public function Product()
     {
         return $this->belongsTo(Product::class);

@@ -15,4 +15,6 @@ return [
     'status' => '--Chọn trạng thái--',
     'on-sell' => 'Còn hàng',
     'out-off' => 'Hết hàng',
+    'my-shop' => 'Shop của tôi',
+    'product-in-shop' => 'Sản phẩm trong shop',
 ];

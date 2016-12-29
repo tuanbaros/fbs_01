@@ -27,6 +27,8 @@ use App\Repositories\Contracts\LikeRepositoryInterface;
 use App\Repositories\Eloquent\LikeRepository;
 use App\Repositories\Contracts\ProductCollectionRepositoryInterface;
 use App\Repositories\Eloquent\ProductCollectionRepository;
+use App\Repositories\Contracts\ImageRepositoryInterface;
+use App\Repositories\Eloquent\ImageRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -59,5 +61,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(OrderDetailRepositoryInterface::class, OrderDetailRepository::class);
         $this->app->bind(LikeRepositoryInterface::class, LikeRepository::class);
         $this->app->bind(ProductCollectionRepositoryInterface::class, ProductCollectionRepository::class);
+        $this->app->bind(ImageRepositoryInterface::class, ImageRepository::class);
     }
 }
