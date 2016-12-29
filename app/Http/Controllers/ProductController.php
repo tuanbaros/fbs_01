@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Contracts\ProductRepositoryInterface as ProductInterface;
 use App\Repositories\Contracts\RateRepositoryInterface as RateInterface;
 use App\Repositories\Contracts\FollowRepositoryInterface as FollowInterface;
+use App\Repositories\Contracts\ImageRepositoryInterface as ImageInterface;
 use App\Repositories\Contracts\ProductCollectionRepositoryInterface as ProductCollectionInterface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Exception;
@@ -21,6 +22,7 @@ class ProductController extends Controller
     private $rateRepository;
     private $productCollectionRepository;
     private $followRepository;
+    private $imageRepository;
 
     protected $productCollectionValidator;
     protected $productValidator;
@@ -31,7 +33,8 @@ class ProductController extends Controller
         FollowInterface $followInterface,
         ProductCollectionInterface $productCollectionInterface,
         ProductCollectionValidator $productCollectionValidator,
-        ProductValidator $productValidator)
+        ProductValidator $productValidator,
+        ImageInterface $imageInterface)
     {
         $this->productRepository = $productInterface;
         $this->rateRepository = $rateInterface;
@@ -39,6 +42,7 @@ class ProductController extends Controller
         $this->productCollectionRepository = $productCollectionInterface;
         $this->productCollectionValidator = $productCollectionValidator;
         $this->productValidator = $productValidator;
+        $this->imageRepository = $imageInterface;
     }
 
     public function show($id)
@@ -67,6 +71,10 @@ class ProductController extends Controller
             if ($this->productValidator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE)) {
                 DB::beginTransaction();
                 $product = $this->productRepository->create($data);
+                foreach ($data['images'] as $key => $value) {
+                    $image = ['product_id' => $product->id, 'url' => $value];
+                    $this->imageRepository->create($image);
+                }
                 $productCollection = ['product_id' => $product->id, 'collection_id' => $data['collection']];
                 if ($this->productCollectionValidator->with($productCollection)->passesOrFail()) {
                     $this->productCollectionRepository->create($productCollection);

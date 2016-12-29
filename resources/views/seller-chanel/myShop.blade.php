@@ -1,5 +1,9 @@
 @extends('layouts.seller.app')
 
+@section('title')
+    @lang('seller.my-shop')
+@endsection
+
 @section('content')
     <div class="container">
         <div class="col-xs-12 col-sm-12 col-md-12 col-ls-12 row-item row introduct-shop">

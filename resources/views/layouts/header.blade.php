@@ -28,7 +28,7 @@
                             <li><a href="{{ route('user.bill.index')}}"><i class="fa fa-btn fa-info-circle">
                             @lang('header.bill')</i></a></li>
                             @if (Auth::user()->shop)
-                                <li><a href="{{ route('user.shop.show', Auth::user()->shop->id) }}">
+                                <li><a href="{{ route('user.user.myShop') }}">
                                     <i class="fa fa-btn fa-shopping-bag">
                                     @lang('header.manage_shop')</i></a>
                                 </li>
