@@ -2,7 +2,7 @@
     <div class="col-md-3 col-sm-12 col-xs-12 col-lg-3 anc">
         <div class="categories list-group border-shadow-bottom">
             <a href="javascript:void(0)" class="list-group-item active">
-                <h4>@lang('categories.products-categories')</h4>
+                <h4>@lang('user.products-category')</h4>
             </a>
             @foreach ($categories as $key => $category)
                 <div class="cate">

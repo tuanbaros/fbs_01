@@ -27,7 +27,7 @@
                     </ol>
                 </div>
                 <div class="col-md-3 col-lg-3 col-sm-12 col-xs-12">
-                    <div><h3>@lang('categories.search')</h3></div>
+                    <div><h3>@lang('order.search')</h3></div>
                     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 margin-top-20">
                         <aside class="sidebar">
                             <nav class="sidebar-nav">
@@ -51,7 +51,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 margin-top-20">
                         <div class="speace20"></div>
                         <div class="title-filter">
-                            <h3>@lang('categories.filter')</h3>
+                            <h3>@lang('user.filter')</h3>
                         </div>
                         <div class="search">
                             <div class="form-group">
@@ -62,7 +62,7 @@
                                 <label for="to">@lang('shopCollection.to')</label>
                                 <input type="number" class="form-control number" id="to" placeholder="@lang('shopCollection.to')">
                             </div>
-                            <button id="search-by-price" type="button" class="button btn-search-product">@lang('categories.search')</button>
+                            <button id="search-by-price" type="button" class="button btn-search-product">@lang('order.search')</button>
                         </div>
                     </div>
                 </div>

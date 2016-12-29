@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.seller.app')
 
 @section('title')
     @lang('order.title')
@@ -8,8 +8,18 @@
     <link rel="stylesheet" href="{{ asset('/bower_components/datatables.net-dt/css/jquery.dataTables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/manageOrder.css') }}">
-    <div class="view-product margin-top-50">
+    <div class="speace50"></div>
+    <div class="view-product">
         <div class="container">
+            <div class="row margin-top-20">
+                <ol class="breadcrumb border-shadow-bottom">
+                    <li>
+                        <a href="{{ route('user.user.myShop') }}">
+                            @lang('seller.my-shop')
+                        </a>
+                    </li>
+                </ol>
+            </div>
             <div class="container-fluid">
                 <h3>@lang('order.list-ordered-product')</h3>
                 <div class="margin-top-20">
@@ -42,7 +52,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-ls-12 row block-search">
-                        <button id="btn-search-order" type="button" class="button btn-search-order">@lang('categories.search')</button>
+                        <button id="btn-search-order" type="button" class="button btn-search-order">@lang('order.search')</button>
                     </div>
                     <div id="table-display-ordered-product">
                         @include('seller.item-ordered-product')

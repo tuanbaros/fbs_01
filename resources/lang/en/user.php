@@ -89,6 +89,7 @@ return [
         'receiver-people' => 'Người nhận',
         'customer-info' => 'Thông tin khách hàng',
         'product-info' => 'Thông tin sản phẩm',
+        'number-order' => 'Đơn hàng số',
         'state' => [
             0 => 'Đang xử lý',
             1 => 'Đang vận chuyển',
@@ -96,4 +97,7 @@ return [
             3 => 'Đã hủy'
         ]
     ],
+    'filter' => 'Lọc theo giá',
+    'view-detail' => 'Xem chi tiết',
+    'products-category' => 'DANH MỤC SẢN PHẨM',
 ];

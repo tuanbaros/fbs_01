@@ -24,18 +24,6 @@
                 <div class="col-xs-12 col-sm-12 col-md-6 col-ls-6">
                     <h4>{{ count($shop->products) }} @lang('shop.product')</h4>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-4 col-ls-6">
-                    <form class="navbar-form navbar-left">
-                        <div class="input-group">
-                            <input type="text" class="form-control col-md-12 search-home" placeholder="Search">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default btn-search-home" type="submit">
-                                    <i class="glyphicon glyphicon-search"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-ls-12 row-item row">
                 <input type="button" class="button btn-add-product" value="Add Product" data-toggle="modal" data-target="#addProduct">
@@ -65,7 +53,7 @@
                                 </div>
                                 <div class="option">
                                     <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true" data-id="{{ $product->id }}"></span>
                                 </div>
                             </div>
                         </div>
