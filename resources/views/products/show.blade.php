@@ -147,11 +147,11 @@
                                 <div id="detail" class="tab-pane fade in active">
                                     <h4>@lang('product.introductProduct') {{ $product->name }}</h4>
                                     <p class="margin-top-20"><h4>@lang('product.generalInformation')</h4></p>
-                                    <p>@lang('product.productName') {{ $product->name }}</p>
-                                    <p>@lang('product.code') {{ $product->code }}</p>
-                                    <p>@lang('product.price') {{ number_format($product->price, 0) }} @lang('home.currency')</p>
-                                    <p>@lang('product.number') {{ $product->quantity }}</p>
-                                    <p>@lang('product.status') {{ $product->status }}</p>
+                                    <p>@lang('product.productName'): {{ $product->name }}</p>
+                                    <p>@lang('product.code'): {{ $product->code }}</p>
+                                    <p>@lang('product.price'): {{ number_format($product->price, 0) }} @lang('home.currency')</p>
+                                    <p>@lang('product.number'): {{ $product->quantity }}</p>
+                                    <p>@lang('product.status'): {{ $product->status > 0 ? Lang::get('seller.on-sell') : Lang::get('seller.out-off') }}</p>
                                     <p class="margin-top-20"><h4>@lang('product.description')</h4></p>
                                     <p>{{ $product->description }}</p>
                                 </div>

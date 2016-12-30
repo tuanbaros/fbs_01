@@ -12,4 +12,6 @@ return [
     'receiver' => 'Người nhận',
     'date-from' => 'Từ ngày',
     'date-to' => 'Đến ngày',
+    'search' => 'Tìm kiếm',
+    'date' => 'Ngày tháng',
 ];

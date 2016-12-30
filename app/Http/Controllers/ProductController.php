@@ -93,6 +93,20 @@ class ProductController extends Controller
         return response()->json(['status' => 'error']);
     }
 
+    public function destroy($id)
+    {
+        if (!$this->productRepository->find($id)) {
+            return response()->json('not-found');
+        }
+        if ($this->productRepository->delete($id)) {
+            $result = 'success';
+        } else {
+            $result = 'error';
+        }
+
+        return response()->json($result);
+    }
+
     public function addRate(Request $request, $id)
     {
         $data = $request->only('number', 'content');

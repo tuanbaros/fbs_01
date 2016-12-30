@@ -96,6 +96,11 @@ var myProducts = function() {
                 }
             }
         });
+        $('#list-product div.option span.glyphicon-trash').on('click', function(event) {
+            if (confirm(lang['confirm-delete'])) {
+                current.deleteProduct($(this).data('id'), current.loadAddProduct);
+            }
+        });
     }
 
     this.successUploadImage = function(url) {
@@ -131,6 +136,20 @@ var myProducts = function() {
                 success();
             } else {
                 error();
+            }
+        });
+    }
+
+    this.deleteProduct = function(id, callback) {
+        $.ajax({
+            url: '/product/' + id,
+            type: 'DELETE',
+        })
+        .done(function(data) {
+            if (data === 'success') {
+                callback();
+            } else {
+                alert(lang[data]);
             }
         });
     }

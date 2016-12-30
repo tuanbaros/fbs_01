@@ -1,8 +1,12 @@
 var lang = {
     'currency' : 'vnđ',
+    'success' : 'Thành công',
+    'not-found' : 'Không tìm thấy',
+    'error' : 'Có lỗi xảy ra',
     'add-cart' : 'Add Cart',
     'input-false' : 'Nhập sai',
     'not-input' : 'Chưa điền đủ thông tin',
+    'confirm-delete' : 'Bạn có chắc chắn muốn xóa',
     'cart' : {
         'success' : 'Sản phẩm đã được thêm vào giỏ hàng!',
         'not-found' : 'Sản phẩm hết hàng hoặc không tồn tại',

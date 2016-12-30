@@ -16,7 +16,7 @@
                 <thead>
                     <tr>
                         <th>@lang('user.bill.id')</th>
-                        <th>@lang('user.bill.product')</th>
+                        <th>@lang('user.bill.title')</th>
                         <th>@lang('user.bill.date')</th>
                         <th>@lang('user.bill.total')</th>
                         <th>@lang('user.bill.status')</th>
@@ -26,13 +26,7 @@
                     @foreach ($orders as $key => $order)
                         <tr>
                             <td><a href="{{ route('user.bill.show', $order->id) }}">@lang('user.bill.prefix'){{ $order->id }}</a></td>
-                            <td>
-                                <ul>
-                                    @foreach ($order->orderDetails as $key => $orderDetail)
-                                        <li><a href="{{ route('product.show', $orderDetail->product->id) }}">{{ $orderDetail->product->name }}</a></li>
-                                    @endforeach
-                                </ul>
-                            </td>
+                            <td><a href="{{ route('user.bill.show', $order->id) }}">@lang('user.bill.number-order') {{ $order->id }}</a></td>
                             <td>{{ $order->created_at }}</td>
                             <td>{{ number_format($order->total_price) }} @lang('user.cart.vnd')</td>
                             <td>{{ Lang::get('user.bill.state')[$order->status] }}</td>

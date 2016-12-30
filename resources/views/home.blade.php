@@ -18,7 +18,7 @@
                     </h4>
                     <h5 class="view-all">
                         <a href="{{ route('category.show', $category->id) }}">
-                            <span class="padding-right-5">@lang('categories.view_detail')</span>
+                            <span class="padding-right-5">@lang('user.view-detail')</span>
                             <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
                         </a>
                     </h5>
